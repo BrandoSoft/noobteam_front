@@ -9,7 +9,7 @@ export const LoginForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const {setUserToken} = useContext(UserContext)
+    const {setUserToken, setUserName} = useContext(UserContext)
 
 
     const handleLogin = async (e: SyntheticEvent) => {
@@ -25,9 +25,11 @@ export const LoginForm = () => {
             })
         })
         const token = await userInfo.json()
+        console.log(token)
 
         localStorage.setItem('noob_team_user', token.accessToken);
         setUserToken(token.accessToken);
+        setUserName(token.name)
     };
 
     return (
