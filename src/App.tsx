@@ -23,7 +23,6 @@ export const App = () => {
 
     return (
         <>
-
                 <Navbar/>
                 <Routes>
                     <Route path="/" element={<Characters/>}/>

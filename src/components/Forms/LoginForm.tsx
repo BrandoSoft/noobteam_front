@@ -3,6 +3,7 @@ import './Forms.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {setErrorMsg, setIsLoggedIn, setUserName, setUserToken} from "../../redux/actions/user";
 import {RootState} from "../../redux/store";
+import { Link } from 'react-router-dom';
 
 
 export const LoginForm = () => {
@@ -70,6 +71,7 @@ export const LoginForm = () => {
                 />
                 <button type="submit">Log in</button>
             </form>
+            <div><Link to="/register">or Register</Link></div>
         </div>
     );
 };

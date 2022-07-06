@@ -23,3 +23,8 @@ export  const setErrorMsg = (errorMsg: string) => ({
     type: UserAction.SET_ERROR_MSG,
     payload: errorMsg,
 })
+
+export  const setRegisterError = (registerError: string[]) => ({
+    type: UserAction.SET_ERROR_MSG,
+    payload: registerError,
+})

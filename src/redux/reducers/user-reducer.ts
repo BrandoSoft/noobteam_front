@@ -6,6 +6,7 @@ interface UserState {
     userId: string;
     isLoggedIn: boolean;
     errorMsg:  string;
+    registerError: string | string[];
 }
 
 const initialState: UserState = {
@@ -14,6 +15,7 @@ const initialState: UserState = {
     userId: '',
     isLoggedIn: false,
     errorMsg: '',
+    registerError: []
 }
 
 interface SetUserToken{
@@ -37,8 +39,12 @@ interface SetErrorMsg {
     type: UserAction.SET_ERROR_MSG
     payload: string;
 }
+interface SetRegisterError {
+    type: UserAction.SET_REGISTER_ERROR
+    payload: string | string[];
+}
 
-type Action = SetUserId | SetUserName | SetUserToken | SetIsLoggedIn | SetErrorMsg
+type Action = SetUserId | SetUserName | SetUserToken | SetIsLoggedIn | SetErrorMsg | SetRegisterError
 
 export default (state = initialState, action: Action) =>{
 
@@ -66,6 +72,11 @@ export default (state = initialState, action: Action) =>{
         case UserAction.SET_ERROR_MSG: {
             return {
                 ...state, errorMsg: action.payload
+            }
+        }
+        case UserAction.SET_REGISTER_ERROR: {
+            return {
+                ...state, registerError: action.payload
             }
         }
         default: return state
