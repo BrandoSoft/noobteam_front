@@ -15,6 +15,7 @@ export const AddCharacter = ({refresh}: Props) => {
     const [character, setCharacter] = useState<RiotCharacterEntity | null>(null)
     const [resError, setResError] = useState(null);
 
+
     const findCharacter = async (e: SyntheticEvent) => {
         e.preventDefault();
         const res = await fetch(`${process.env.REACT_APP_BACKEND}/characters/find/${name}`, {
@@ -32,7 +33,9 @@ export const AddCharacter = ({refresh}: Props) => {
         }
         if (res.status !== 200) {
             setResError(data.errors[0].msg)
+
         }
+        setName('');
     };
 
     return (
