@@ -2,6 +2,8 @@ import React from 'react';
 import {SimpleCharactersEntity} from 'types'
 
 import './PlayerCard.scss'
+import {useSelector} from "react-redux";
+import {RootState} from "../../redux/store";
 
 interface Props {
     data: SimpleCharactersEntity
@@ -9,10 +11,24 @@ interface Props {
 
 //@TODO resolve problem with prop type
 
-const PlayerCard = ({data}: any) => {
+const PlayerCard = ({data, refresh}: any) => {
 
-    const removePlayerFromList =() =>{
-        console.log()
+    const {userId, userToken} = useSelector((store: RootState) => store.user)
+
+    const removePlayerFromList = async () => {
+        const res = await fetch(`${process.env.REACT_APP_BACKEND}/characters/`, {
+                method: 'DELETE',
+                body: JSON.stringify({
+                    name: data.name,
+                    userId: userId
+                }),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-auth-token': userToken,
+                },
+            }
+        );
+        refresh()
     }
 
     return (
