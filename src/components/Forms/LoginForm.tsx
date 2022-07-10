@@ -1,7 +1,7 @@
 import React, {SyntheticEvent, useContext, useState} from 'react';
 import './Forms.scss'
 import {useDispatch, useSelector} from "react-redux";
-import {setErrorMsg, setIsLoggedIn, setUserName, setUserToken} from "../../redux/actions/user";
+import {setErrorMsg, setIsLoggedIn, setUserId, setUserName, setUserToken} from "../../redux/actions/user";
 import {RootState} from "../../redux/store";
 import { Link } from 'react-router-dom';
 
@@ -17,7 +17,7 @@ export const LoginForm = () => {
 
     const handleLogin = async (e: SyntheticEvent) => {
         e.preventDefault()
-        const response = await fetch('http://localhost:3001/user/login', {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND}/user/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -29,13 +29,15 @@ export const LoginForm = () => {
         })
 
         const userInfo = await response.json();
+        console.log(userInfo.userId)
 
         if (response.status === 200) {
             console.log('status to 200')
             localStorage.setItem('noob_team_user', userInfo.accessToken);
             dispatch(setUserToken(userInfo.accessToken));
             dispatch(setUserName(userInfo.name));
-            dispatch(setIsLoggedIn(true))
+            dispatch(setIsLoggedIn(true));
+            dispatch(setUserId(userInfo.userId))
         }
         if (response.status !== 200) {
             dispatch(setErrorMsg(userInfo.errors[0].msg))

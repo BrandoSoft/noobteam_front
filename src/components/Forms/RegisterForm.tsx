@@ -18,7 +18,7 @@ export const RegisterForm = () => {
 
     const handleRegister = async (e: SyntheticEvent) => {
         e.preventDefault();
-        const registerUser = await fetch('http://localhost:3001/user/register', {
+        const registerUser = await fetch(`${process.env.REACT_APP_BACKEND}/user/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

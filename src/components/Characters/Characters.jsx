@@ -1,31 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import { AddCharacter } from "../AddCharacter/AddCharacter";
 import { useDispatch, useSelector } from "react-redux";
-import {RootState} from '../../redux/store'
+import { RootState } from '../../redux/store'
 
 export const Characters = () => {
-    const dispatch = useDispatch();
-    const {userToken, userName, isLoggedIn} = useSelector((store: RootState) => store.user)
+    const { userToken, userName, isLoggedIn, userId } = useSelector((store: RootState) => store.user)
 
-    const [characters, setCharacters] = useState([])
+    const [characters, setCharacters] = useState([]);
+
+    const getPlayerList = async () => {
+        const res = await fetch(`${process.env.REACT_APP_BACKEND}/characters/${userId}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-auth-token': userToken,
+                },
+            }
+        );
+        const characterList = await res.json()
+        await setCharacters(characterList)
+    }
+
+    const show = () =>{
+        console.log('działam')
+    }
+
 
     useEffect(() => {
-        (async () => {
-            const res = await fetch('http://localhost:3001/characters/94e8503e-2097-4b59-bd3f-c1ff1eaa4f0c', {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'x-auth-token': userToken,
-                    },
-                }
-            );
-            console.log('res', res)
-            setCharacters(await res.json())
-            console.log(characters)
-        })()
+        if (isLoggedIn) {
+           getPlayerList()
+        }
     }, [userName]);
 
-    if(isLoggedIn){
+    if (isLoggedIn) {
         return (
             <div>
 
@@ -37,10 +44,10 @@ export const Characters = () => {
                     </>
                 }
 
-                <AddCharacter/>
+                <AddCharacter refresh={getPlayerList}/>
             </div>
         );
     }
-    return  <p>Zaloguj się by śledzić postacie.</p>
+    return <p>Zaloguj się by śledzić postacie.</p>
 
 };
