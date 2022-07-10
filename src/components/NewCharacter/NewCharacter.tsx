@@ -22,7 +22,7 @@ const NewCharacter = ({characterData, show}: Props) => {
             userId: userId,
             puuid: characterData.puuid,
             accountId: characterData.accountId,
-            id: characterData.accountId,
+            id: characterData.id,
             profileIconId: characterData.profileIconId,
             revisionDate: characterData.revisionDate,
             summonerLevel: characterData.summonerLevel,

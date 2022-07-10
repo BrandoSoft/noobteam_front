@@ -38,7 +38,7 @@ export const Characters = () => {
                     characters.length > 0 &&
                     <>
                         <h2>Witaj {userName}: Lista postaci które obserwujesz:</h2>
-                        <div>Komponent z mapa postaci {characters.map(e => <PlayerCard data={e} key={e.puuid} refresh={getPlayerList}/>)}</div>
+                         {characters.map(e => <PlayerCard data={e} key={e.puuid} refresh={getPlayerList}/>)}
                     </>
                 }
 
