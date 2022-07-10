@@ -1,0 +1,24 @@
+.player {
+  display: flex;
+  width: 90%;
+  border: 2px solid black;
+  margin: 10px auto;
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid salmon;
+    width: 20%;
+    margin: 10px;
+    align-items: center;
+  }
+  img {
+    width: 100px;
+    height: 100px;
+  }
+  button{
+    margin: 10px;
+  padding: 5px;
+  }
+}
+

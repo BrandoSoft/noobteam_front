@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { AddCharacter } from "../AddCharacter/AddCharacter";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from '../../redux/store'
+import PlayerCard from "../PlayerCard/PlayerCard";
 
 export const Characters = () => {
     const { userToken, userName, isLoggedIn, userId } = useSelector((store: RootState) => store.user)
@@ -20,10 +21,7 @@ export const Characters = () => {
         const characterList = await res.json()
         await setCharacters(characterList)
     }
-
-    const show = () =>{
-        console.log('działam')
-    }
+    console.log(characters)
 
 
     useEffect(() => {
@@ -40,7 +38,7 @@ export const Characters = () => {
                     characters.length > 0 &&
                     <>
                         <h2>Witaj {userName}: Lista postaci które obserwujesz:</h2>
-                        <p>Komponent z mapa postaci {characters.map(e => <p key={e.name}>{e.name}</p>)}</p>
+                        <div>Komponent z mapa postaci {characters.map(e => <PlayerCard data={e}/>)}</div>
                     </>
                 }
 
