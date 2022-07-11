@@ -16,7 +16,8 @@ const PlayerCard = ({data, refresh}: any) => {
 
     const {userId, userToken} = useSelector((store: RootState) => store.user);
 
-    const [gameInfo, setGameInfo] = useState([]);
+    const [gameInfo, setGameInfo] = useState<any[]>([]);
+    const [resMsg, setResMsg] = useState(null);
 
     const removePlayerFromList = async () => {
         const res = await fetch(`${process.env.REACT_APP_BACKEND}/characters/`, {
@@ -45,12 +46,16 @@ const PlayerCard = ({data, refresh}: any) => {
                 },
             }
         );
-
         const infoData = await res.json()
-        console.log(infoData)
-        setGameInfo(infoData.participants)
+        if(res.status === 400) {
+            setResMsg(infoData.errors[0].msg)
+            setTimeout(()=> setResMsg(null),3000)
+        }else{
+            setGameInfo(infoData.participants)
+        }
+
+
     }
-    console.log(gameInfo)
     return (
         <div className="player">
             <div className="player__info">
@@ -62,8 +67,17 @@ const PlayerCard = ({data, refresh}: any) => {
                 <p> LVL: {data.summonerLevel}</p>
                 <button onClick={removePlayerFromList}>Przestań obserwować</button>
             </div>
-            <div className="player_game">
-                {gameInfo.length > 0? gameInfo.map(enemy => <EnemyCard data={enemy} />) : null}
+            <div className="player__game">
+                <p>{resMsg && resMsg}</p>
+               <div className="player__ally">
+                    {gameInfo.length > 0? gameInfo.filter(e=>e.teamId === 100).map(enemy => <EnemyCard data={enemy} />) : null}
+                </div>
+
+                <div className="player__enemy">
+                    {gameInfo.length > 0? gameInfo.filter(e=>e.teamId === 200).map(enemy => <EnemyCard data={enemy} />) : null}
+                </div>
+
+
             </div>
         </div>
     );
