@@ -13,11 +13,13 @@ interface Props {
 //@TODO resolve problem with prop type
 
 const PlayerCard = ({data, refresh}: any) => {
+    const version = process.env.REACT_APP_DDRAGON;
 
     const {userId, userToken} = useSelector((store: RootState) => store.user);
 
     const [gameInfo, setGameInfo] = useState<any[]>([]);
     const [resMsg, setResMsg] = useState(null);
+    const [championsList, setChampionsList] = useState('nie zaladowalem sie jeszcze')
 
     const removePlayerFromList = async () => {
         const res = await fetch(`${process.env.REACT_APP_BACKEND}/characters/`, {
@@ -35,7 +37,14 @@ const PlayerCard = ({data, refresh}: any) => {
         refresh()
     }
 
+    const getChampData = async () => {
+        const res = await fetch(`http://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json`)
 
+
+        const data = await res.json()
+        setChampionsList(data.data)
+
+    }
 
     const checkGame = async () => {
         const res = await fetch(`${process.env.REACT_APP_BACKEND}/characters/game/${data.id}`, {
@@ -46,15 +55,21 @@ const PlayerCard = ({data, refresh}: any) => {
                 },
             }
         );
+
         const infoData = await res.json()
+
         if(res.status === 400) {
             setResMsg(infoData.errors[0].msg)
             setTimeout(()=> setResMsg(null),3000)
         }else{
             setGameInfo(infoData.participants)
+
         }
+        const resChamp = await fetch(`http://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json`)
 
 
+        const champData = await resChamp.json()
+        setChampionsList(champData.data)
     }
     return (
         <div className="player">
@@ -70,11 +85,11 @@ const PlayerCard = ({data, refresh}: any) => {
             <div className="player__game">
                 <p>{resMsg && resMsg}</p>
                <div className="player__ally">
-                    {gameInfo.length > 0? gameInfo.filter(e=>e.teamId === 100).map(enemy => <EnemyCard data={enemy} />) : null}
+                    {gameInfo.length > 0? gameInfo.filter(e=>e.teamId === 100).map(enemy => <EnemyCard data={enemy} list={championsList} />) : null}
                 </div>
 
                 <div className="player__enemy">
-                    {gameInfo.length > 0? gameInfo.filter(e=>e.teamId === 200).map(enemy => <EnemyCard data={enemy} />) : null}
+                    {gameInfo.length > 0? gameInfo.filter(e=>e.teamId === 200).map(enemy => <EnemyCard data={enemy} list={championsList} />) : null}
                 </div>
 
 
