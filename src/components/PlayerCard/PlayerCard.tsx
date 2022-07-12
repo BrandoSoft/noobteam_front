@@ -17,9 +17,10 @@ const PlayerCard = ({data, refresh}: any) => {
 
     const {userId, userToken} = useSelector((store: RootState) => store.user);
 
-    const [gameInfo, setGameInfo] = useState<any[]>([]);
     const [resMsg, setResMsg] = useState(null);
-    const [championsList, setChampionsList] = useState('nie zaladowalem sie jeszcze')
+    const [championsList, setChampionsList] = useState('nie zaladowalem sie jeszcze');
+    const [ally, setAlly] = useState<any[]>([]);
+    const [enemy, setEnemy] = useState<any[]>([]);
 
     const removePlayerFromList = async () => {
         const res = await fetch(`${process.env.REACT_APP_BACKEND}/characters/`, {
@@ -36,14 +37,10 @@ const PlayerCard = ({data, refresh}: any) => {
         );
         refresh()
     }
-
     const getChampData = async () => {
         const res = await fetch(`http://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json`)
-
-
         const data = await res.json()
         setChampionsList(data.data)
-
     }
 
     const checkGame = async () => {
@@ -62,16 +59,20 @@ const PlayerCard = ({data, refresh}: any) => {
             setResMsg(infoData.errors[0].msg)
             setTimeout(()=> setResMsg(null),3000)
         }else{
-            setGameInfo(infoData.participants)
-            console.log(infoData)
+           setAlly(infoData.participants.filter((e:any)=>e.teamId === 100))
+           setEnemy(infoData.participants.filter((e:any)=>e.teamId === 200))
+
 
         }
         const resChamp = await fetch(`http://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json`)
 
-
         const champData = await resChamp.json()
         setChampionsList(champData.data)
     }
+
+    // console.log(ally)
+    // console.log(enemy)
+
     return (
         <div className="player">
             <div className="player__info">
@@ -85,15 +86,13 @@ const PlayerCard = ({data, refresh}: any) => {
             </div>
             <div className="player__game">
                 <p>{resMsg && resMsg}</p>
-                {}
+
                <div className="player__ally">
-                    {gameInfo.length > 0? gameInfo.filter(e=>e.teamId === 100).map(enemy => <EnemyCard data={enemy} key={enemy.summonerName}list={championsList} />) : null}
-                </div>
-
+                {ally.length > 0? ally.map(item => <EnemyCard data={item} key={item.summonerName} list={championsList} />) : null}
+                 </div>
                 <div className="player__enemy">
-                    {gameInfo.length > 0? gameInfo.filter(e=>e.teamId === 200).map(enemy => <EnemyCard data={enemy} key={enemy.summonerName} list={championsList} />) : null}
+                {enemy.length > 0? enemy.map( item=> <EnemyCard data={item} key={item.summonerName} list={championsList} />) : null}
                 </div>
-
 
             </div>
         </div>
