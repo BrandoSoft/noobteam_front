@@ -1,0 +1,19 @@
+.navbar {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  background-color:red;
+  & ul {
+    display: flex;
+    justify-content: center;
+    & li {
+      padding: 0 10px;
+      list-style: none;
+    }
+  }
+  & button{
+    padding: 0 10px;
+    margin: 0 10px;
+
+  }
+}
