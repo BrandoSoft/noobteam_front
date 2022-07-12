@@ -18,7 +18,6 @@ export const App = () => {
         if (user) {
             dispatch(setUserToken(user));
         }
-        console.log('user to', user)
     }, []);
 
     return (

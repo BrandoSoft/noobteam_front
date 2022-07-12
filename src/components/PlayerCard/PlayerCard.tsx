@@ -63,6 +63,7 @@ const PlayerCard = ({data, refresh}: any) => {
             setTimeout(()=> setResMsg(null),3000)
         }else{
             setGameInfo(infoData.participants)
+            console.log(infoData)
 
         }
         const resChamp = await fetch(`http://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json`)
@@ -84,12 +85,13 @@ const PlayerCard = ({data, refresh}: any) => {
             </div>
             <div className="player__game">
                 <p>{resMsg && resMsg}</p>
+                {}
                <div className="player__ally">
-                    {gameInfo.length > 0? gameInfo.filter(e=>e.teamId === 100).map(enemy => <EnemyCard data={enemy} list={championsList} />) : null}
+                    {gameInfo.length > 0? gameInfo.filter(e=>e.teamId === 100).map(enemy => <EnemyCard data={enemy} key={enemy.summonerName}list={championsList} />) : null}
                 </div>
 
                 <div className="player__enemy">
-                    {gameInfo.length > 0? gameInfo.filter(e=>e.teamId === 200).map(enemy => <EnemyCard data={enemy} list={championsList} />) : null}
+                    {gameInfo.length > 0? gameInfo.filter(e=>e.teamId === 200).map(enemy => <EnemyCard data={enemy} key={enemy.summonerName} list={championsList} />) : null}
                 </div>
 
 

@@ -3,11 +3,12 @@ import { AddCharacter } from "../AddCharacter/AddCharacter";
 import { useSelector } from "react-redux";
 import { RootState } from '../../redux/store'
 import PlayerCard from "../PlayerCard/PlayerCard";
+import { SimpleCharactersEntity } from 'types';
 
 export const Characters = () => {
     const { userToken, userName, isLoggedIn, userId } = useSelector((store: RootState) => store.user)
 
-    const [characters, setCharacters] = useState([]);
+    const [characters, setCharacters] = useState<SimpleCharactersEntity | any>([]);
 
     const getPlayerList = async () => {
         const res = await fetch(`${process.env.REACT_APP_BACKEND}/characters/${userId}`, {
@@ -21,7 +22,6 @@ export const Characters = () => {
         const characterList = await res.json()
         await setCharacters(characterList)
     }
-    console.log(characters)
 
 
     useEffect(() => {
@@ -38,7 +38,7 @@ export const Characters = () => {
                     characters.length > 0 &&
                     <>
                         <h2>Witaj {userName}: Lista postaci które obserwujesz:</h2>
-                         {characters.map(e => <PlayerCard data={e} key={e.puuid} refresh={getPlayerList}/>)}
+                         {characters.map((e: SimpleCharactersEntity) => <PlayerCard data={e} key={e.name} refresh={getPlayerList}/>)}
                     </>
                 }
 
