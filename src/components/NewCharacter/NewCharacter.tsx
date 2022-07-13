@@ -44,9 +44,11 @@ const NewCharacter = ({characterData, show, clear}: Props) => {
             setResMsg(data.errors[0].msg)
             setTimeout(()=> setResMsg(null),3000)
         }
+        if(res.status === 200){
+            show();
+            clear();
+        }
 
-        show();
-        clear();
     };
 
     return (

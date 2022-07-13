@@ -44,6 +44,34 @@ export const LoginForm = () => {
         }
     };
 
+    const handleLoginTestUser = async () => {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND}/user/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: 'test@test.pl',
+                password: '12345'
+            })
+        })
+
+        const userInfo = await response.json();
+        console.log(userInfo.userId)
+
+        if (response.status === 200) {
+            console.log('status to 200')
+            localStorage.setItem('noob_team_user', userInfo.accessToken);
+            dispatch(setUserToken(userInfo.accessToken));
+            dispatch(setUserName(userInfo.name));
+            dispatch(setIsLoggedIn(true));
+            dispatch(setUserId(userInfo.userId))
+        }
+        if (response.status !== 200) {
+            dispatch(setErrorMsg(userInfo.errors[0].msg))
+        }
+    };
+
     const logoutUser = () => {
         localStorage.removeItem('noob_team_user');
         dispatch(setUserToken(''))
@@ -74,6 +102,7 @@ export const LoginForm = () => {
                 <button type="submit">Log in</button>
             </form>
             <div><Link to="/register">or Register</Link></div>
+            <button onClick={handleLoginTestUser}> OR Login to test ACCOUNT!</button>
         </div>
     );
 };
