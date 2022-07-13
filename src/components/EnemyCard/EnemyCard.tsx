@@ -37,7 +37,6 @@ const EnemyCard = ({data, list}: any) => {
                 }
             );
             const summonerData = await res.json()
-            console.log('summoner data id: ', summonerData.id)
 
             const league = await fetch(`${process.env.REACT_APP_BACKEND}/characters/leagues/${summonerData.id}`, {
                     method: 'GET',
@@ -90,7 +89,7 @@ const EnemyCard = ({data, list}: any) => {
                     alt=""/>
                 <p className="enemy__name">{data.summonerName}</p>
                 <>
-                    {leagueInfo.length > 0? leagueInfo.map( league=> <EnemyStats key={league.leagueId + league.summonerId} stats={league}/>) : null}
+                    {leagueInfo.length > 0? leagueInfo.map( league=> <EnemyStats key={league.leagueId + league.summonerId} stats={league}/>) : <div>BRAK RANKINGU</div>}
                     </>
             </div>
 

@@ -13,7 +13,9 @@ export const AddCharacter = ({refresh}: Props) => {
     const {userToken} = useSelector((store: RootState) => store.user)
     const [name, setName] = useState("");
     const [character, setCharacter] = useState<RiotCharacterEntity | null>(null)
+    const [randomCharacter, setRandomCharacter] = useState<RiotCharacterEntity | null>(null)
     const [resError, setResError] = useState(null);
+
 
 
     const findCharacter = async (e: SyntheticEvent) => {
@@ -38,6 +40,11 @@ export const AddCharacter = ({refresh}: Props) => {
         setName('');
     };
 
+    const getRandomChamp = async () => {
+
+    }
+
+
     return (
         <div className="loginForm">
             <p>Wpisz nazwę postaci:</p>
@@ -50,6 +57,7 @@ export const AddCharacter = ({refresh}: Props) => {
                 />
                 <button type="submit">Szukaj</button>
             </form>
+            <button onClick={getRandomChamp}> Lub wylosuj!</button>
             {resError && <div>{resError}</div>}
 
             {character && <NewCharacter characterData={character} show={refresh}/>}
