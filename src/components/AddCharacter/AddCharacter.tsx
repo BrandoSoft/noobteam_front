@@ -41,7 +41,23 @@ export const AddCharacter = ({refresh}: Props) => {
     };
 
     const getRandomChamp = async () => {
+        const res = await fetch(`${process.env.REACT_APP_BACKEND}/characters/random/player`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-auth-token': userToken,
+                },
+            }
+        );
+        const data = await res.json()
 
+        if (res.status === 200) {
+            setRandomCharacter(data)
+        }
+        if (res.status !== 200) {
+            setResError(data.errors[0].msg)
+
+        }
     }
 
 
@@ -60,7 +76,10 @@ export const AddCharacter = ({refresh}: Props) => {
             <button onClick={getRandomChamp}> Lub wylosuj!</button>
             {resError && <div>{resError}</div>}
 
-            {character && <NewCharacter characterData={character} show={refresh}/>}
+            {character && <NewCharacter characterData={character} show={refresh} clear={()=>setCharacter(null)} />}
+            {randomCharacter && <NewCharacter characterData={randomCharacter} show={refresh} clear={()=>setRandomCharacter(null)}/>}
         </div>
     );
 };
+
+//@TODO Walidacja formularza (empty)

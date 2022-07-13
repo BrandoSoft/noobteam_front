@@ -42,6 +42,8 @@ const getType= (type: string)=>{
             return 'FLEX'
         case 'RANKED_SOLO_5x5':
             return 'SOLO Q'
+        case 'RANKED_TFT_DOUBLE_UP':
+            return 'TFT'
         default: return'Brak rankedów!'
     }
 }

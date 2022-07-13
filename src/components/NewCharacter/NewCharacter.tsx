@@ -7,10 +7,11 @@ import {RootState} from "../../redux/store";
 
 interface Props {
     characterData: RiotCharacterEntity,
-    show: () => {}
+    show: () => {},
+    clear: ()=> void
 }
 
-const NewCharacter = ({characterData, show}: Props) => {
+const NewCharacter = ({characterData, show, clear}: Props) => {
 
     const {userToken, userId} = useSelector((store: RootState) => store.user);
     const [resMsg, setResMsg] = useState(null)
@@ -44,7 +45,8 @@ const NewCharacter = ({characterData, show}: Props) => {
             setTimeout(()=> setResMsg(null),3000)
         }
 
-        show()
+        show();
+        clear();
     };
 
     return (
