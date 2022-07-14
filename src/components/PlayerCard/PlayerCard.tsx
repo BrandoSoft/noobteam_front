@@ -91,13 +91,6 @@ const PlayerCard = ({data, refresh}: any) => {
                         <div className="error__message">{resMsg}</div>
                     </div>
                 }
-                <div className="player__ally">
-                    {ally.length > 0 && <p className="title">Twój Team:</p>}
-                    <div className="enemy-cards">
-                        {ally.length > 0 ? ally.map(item => <EnemyCard data={item} key={item.summonerName}
-                                                                       list={championsList}/>) : null}
-                    </div>
-                </div>
 
                 <div className="player__enemy">
                     {enemy.length > 0 && <p className="title">Przeciwnicy:</p>}
@@ -106,6 +99,14 @@ const PlayerCard = ({data, refresh}: any) => {
                                                                          list={championsList}/>) : null}
                     </div>
                 </div>
+                <div className="player__ally">
+                    {ally.length > 0 && <p className="title">Twój Team:</p>}
+                    <div className="enemy-cards">
+                        {ally.length > 0 ? ally.map(item => <EnemyCard data={item} key={item.summonerName}
+                                                                       list={championsList}/>) : null}
+                    </div>
+                </div>
+
             </div>
         </div>
     );
