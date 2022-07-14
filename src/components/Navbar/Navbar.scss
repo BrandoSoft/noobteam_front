@@ -1,14 +1,34 @@
+@import './src/scss/variables';
+
 .navbar {
   display: flex;
   width: 100%;
+  height: 60px;
   justify-content: space-between;
-  background-color:red;
+  background-color: $nav-main;
+  box-shadow: 8px 8px 24px 0 rgba(66, 68, 90, 1);
   & ul {
     display: flex;
     justify-content: center;
+    margin-left: 50px;
     & li {
-      padding: 0 10px;
+     margin: 10px;
+      padding: 0 20px;
+      height: 40px;
       list-style: none;
+      border-radius: 10px;
+      & a{
+        color: #fff;
+        font-family: $ff-main;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 20px;
+        line-height: 40px;
+        }
+      &:hover {
+        background-color: $nav-highlight;
+      }
+
     }
   }
   & button{

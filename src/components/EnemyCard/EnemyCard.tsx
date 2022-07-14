@@ -79,15 +79,12 @@ const EnemyCard = ({data, list}: any) => {
         // }
     }, [])
 
-    console.log('league table',leagueInfo)
-
-
     return (
             <div className="enemy">
+                <p className="enemy__name">{data.summonerName}</p>
                 <img
                     src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champName}.png`}
                     alt=""/>
-                <p className="enemy__name">{data.summonerName}</p>
                 <>
                     {leagueInfo.length > 0? leagueInfo.map( league=> <EnemyStats key={league.leagueId + league.summonerId} stats={league}/>) : <div>BRAK RANKINGU</div>}
                     </>

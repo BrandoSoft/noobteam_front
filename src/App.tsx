@@ -8,6 +8,8 @@ import {setIsLoggedIn, setUserToken} from './redux/actions/user';
 import {RegisterForm} from "./components/Forms/RegisterForm";
 import {User} from "./components/User/User";
 
+import './App.scss'
+
 
 export const App = () => {
     const {} = useSelector((store: RootState) => store.user)
@@ -23,11 +25,13 @@ export const App = () => {
     return (
         <>
                 <Navbar/>
+                <div className="container">
                 <Routes>
-                    <Route path="/" element={<Characters/>}/>
-                    <Route path="/user" element={<User/>}/>
-                    <Route path="/register" element={<RegisterForm/>}/>
+                        <Route path="/" element={<Characters/>}/>
+                        <Route path="/user" element={<User/>}/>
+                        <Route path="/register" element={<RegisterForm/>}/>
                 </Routes>
+                </div>
         </>
     )
 }

@@ -10,9 +10,6 @@ export const Navbar = () => {
                 <li><NavLink to='/'>Home</NavLink></li>
                 <li><NavLink to='/user'>User</NavLink></li>
             </ul>
-            {
-
-            }
             <LoginForm/>
         </div>
     );

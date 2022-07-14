@@ -36,34 +36,41 @@ const getImage = (tier: string) => {
             return null
     }
 }
-const getType= (type: string)=>{
-    switch (type){
+const getType = (type: string) => {
+    switch (type) {
         case 'RANKED_FLEX_SR':
             return 'FLEX'
         case 'RANKED_SOLO_5x5':
             return 'SOLO Q'
         case 'RANKED_TFT_DOUBLE_UP':
             return 'TFT'
-        default: return'Brak rankedów!'
+        default:
+            return 'Brak rankedów!'
     }
 }
 
-interface Props{
+interface Props {
     stats: LeaguesEntity
 }
+
 const EnemyStats = ({stats}: Props) => {
 
     return (
-        <div>
-            <div>{getType(stats.queueType)}</div>
-            <div>
-                {getImage(stats.tier)}
-                <div>
-                    <p>{stats.tier} {stats.rank}</p>
-                    <p>{stats.leaguePoints} League Points</p>
-                    <p>Wins / Losses</p>
-                    <p>{stats.wins} / {stats.losses}</p>
+        <div className="stats">
+            <div className="stats__que">
+                {getType(stats.queueType)}
+            </div>
+            <div className="stats__tier">
+                <div className="stats__tier__left">
+                    {getImage(stats.tier)}
+                    <p>LP: {stats.leaguePoints}</p>
+                    <div>
+
+                        <p className=" score">W: <span className="win"> {stats.wins}</span></p>
+                        <p className=" score">L: <span className="lose"> {stats.losses}</span></p>
+                    </div>
                 </div>
+                <p className="stats__tier__rank">{stats.tier} {stats.rank}</p>
 
             </div>
 

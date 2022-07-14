@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { AddCharacter } from "../AddCharacter/AddCharacter";
+import { AddCharacter } from "./AddCharacter";
 import { useSelector } from "react-redux";
 import { RootState } from '../../redux/store'
 import PlayerCard from "../PlayerCard/PlayerCard";
 import { SimpleCharactersEntity } from 'types';
+import './Characters.scss'
 
 export const Characters = () => {
     const { userToken, userName, isLoggedIn, userId } = useSelector((store: RootState) => store.user)
@@ -32,7 +33,7 @@ export const Characters = () => {
 
     if (isLoggedIn) {
         return (
-            <div>
+            <div className="charactersContainer">
 
                 {
                     characters.length > 0 &&

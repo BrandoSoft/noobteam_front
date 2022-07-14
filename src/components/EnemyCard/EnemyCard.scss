@@ -1,7 +1,54 @@
+@import './src/scss/variables';
+
+
 .enemy{
-  margin: 5px;
-  &__name{
-    text-align: center;
-    font-weight: 400;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  background-color: $bgc-main;
+  border-radius: 10px;
+  & img{
+
   }
+}
+
+.stats{
+
+  margin-top: 10px;
+  &__que{
+    border-top: 2px solid $nav-main ;
+    border-right: 2px solid $nav-main ;
+    margin-bottom: 10px;
+  }
+  &__tier{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    &__rank{
+      align-items: flex-start;
+      padding: 0 10px;
+      border-left: 2px solid $nav-main ;
+      //border-bottom: 2px solid $nav-main ;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+    }
+    &__left{
+      padding: 15px;
+      border-bottom: 2px solid $nav-main ;
+      border-left: 2px solid $nav-main ;
+    }
+  }
+}
+
+.score{
+  font-weight: 900;
+}
+
+.win{
+  color: darkgreen;
+}
+.lose{
+  color: red;
 }

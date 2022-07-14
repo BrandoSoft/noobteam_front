@@ -4,8 +4,8 @@ import {RootState} from "../../redux/store";
 import NewCharacter from "../NewCharacter/NewCharacter";
 import {RiotCharacterEntity} from 'types'
 
-interface Props{
-    refresh: ()=>{}
+interface Props {
+    refresh: () => {}
 }
 
 export const AddCharacter = ({refresh}: Props) => {
@@ -15,7 +15,6 @@ export const AddCharacter = ({refresh}: Props) => {
     const [character, setCharacter] = useState<RiotCharacterEntity | null>(null)
     const [randomCharacter, setRandomCharacter] = useState<RiotCharacterEntity | null>(null)
     const [resError, setResError] = useState(null);
-
 
 
     const findCharacter = async (e: SyntheticEvent) => {
@@ -35,6 +34,7 @@ export const AddCharacter = ({refresh}: Props) => {
         }
         if (res.status !== 200) {
             setResError(data.errors[0].msg)
+            setTimeout(() => setResError(null), 3000)
 
         }
         setName('');
@@ -56,28 +56,33 @@ export const AddCharacter = ({refresh}: Props) => {
         }
         if (res.status !== 200) {
             setResError(data.errors[0].msg)
-
         }
     }
 
 
     return (
-        <div className="loginForm">
-            <p>Wpisz nazwę postaci:</p>
-            <form onSubmit={findCharacter}>
-                <input
-                    type="name"
-                    placeholder="name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                />
-                <button type="submit">Szukaj</button>
-            </form>
-            <button onClick={getRandomChamp}> Lub wylosuj!</button>
-            {resError && <div>{resError}</div>}
+        <div className="addCharacterContainer">
+            <div className="newCharacters">
+                {character && <NewCharacter characterData={character} show={refresh} clear={() => setCharacter(null)}/>}
+                {randomCharacter &&
+                <NewCharacter characterData={randomCharacter} show={refresh} clear={() => setRandomCharacter(null)}/>}
+            </div>
+            <div className="characters">
+                <p>Wpisz nazwę postaci:</p>
+                <form onSubmit={findCharacter} className="characters__form">
+                    <input
+                        type="name"
+                        placeholder="Nazwa Przywoływacza"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                    <button type="submit" className="login">Szukaj</button>
+                </form>
+                <button onClick={getRandomChamp} className="login"> Lub wylosuj!</button>
+                {resError && <div>{resError}</div>}
 
-            {character && <NewCharacter characterData={character} show={refresh} clear={()=>setCharacter(null)} />}
-            {randomCharacter && <NewCharacter characterData={randomCharacter} show={refresh} clear={()=>setRandomCharacter(null)}/>}
+
+            </div>
         </div>
     );
 };

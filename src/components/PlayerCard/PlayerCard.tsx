@@ -5,6 +5,8 @@ import './PlayerCard.scss'
 import {useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
 import EnemyCard from "../EnemyCard/EnemyCard";
+import {BiCommentError} from "react-icons/bi";
+
 
 interface Props {
     data: SimpleCharactersEntity
@@ -18,7 +20,7 @@ const PlayerCard = ({data, refresh}: any) => {
     const {userId, userToken} = useSelector((store: RootState) => store.user);
 
     const [resMsg, setResMsg] = useState(null);
-    const [championsList, setChampionsList] = useState('nie zaladowalem sie jeszcze');
+    const [championsList, setChampionsList] = useState();
     const [ally, setAlly] = useState<any[]>([]);
     const [enemy, setEnemy] = useState<any[]>([]);
 
@@ -55,12 +57,12 @@ const PlayerCard = ({data, refresh}: any) => {
 
         const infoData = await res.json()
 
-        if(res.status === 400) {
+        if (res.status === 400) {
             setResMsg(infoData.errors[0].msg)
-            setTimeout(()=> setResMsg(null),3000)
-        }else{
-           setAlly(infoData.participants.filter((e:any)=>e.teamId === 100))
-           setEnemy(infoData.participants.filter((e:any)=>e.teamId === 200))
+            setTimeout(() => setResMsg(null), 3000)
+        } else {
+            setAlly(infoData.participants.filter((e: any) => e.teamId === 100))
+            setEnemy(infoData.participants.filter((e: any) => e.teamId === 200))
 
 
         }
@@ -70,13 +72,11 @@ const PlayerCard = ({data, refresh}: any) => {
         setChampionsList(champData.data)
     }
 
-    // console.log(ally)
-    // console.log(enemy)
-
     return (
         <div className="player">
             <div className="player__info">
                 <button onClick={checkGame}>Sprawdz mecz</button>
+
                 <p>{data.name}</p>
                 <img
                     src={`http://ddragon.leagueoflegends.com/cdn/12.12.1/img/profileicon/${data.profileIconId}.png`}
@@ -85,15 +85,27 @@ const PlayerCard = ({data, refresh}: any) => {
                 <button onClick={removePlayerFromList}>Przestań obserwować</button>
             </div>
             <div className="player__game">
-                <p>{resMsg && resMsg}</p>
-
-               <div className="player__ally">
-                {ally.length > 0? ally.map(item => <EnemyCard data={item} key={item.summonerName} list={championsList} />) : null}
-                 </div>
-                <div className="player__enemy">
-                {enemy.length > 0? enemy.map( item=> <EnemyCard data={item} key={item.summonerName} list={championsList} />) : null}
+                {
+                    resMsg && <div className="error error-relative">
+                        <BiCommentError className="error__icon"/>
+                        <div className="error__message">{resMsg}</div>
+                    </div>
+                }
+                <div className="player__ally">
+                    {ally.length > 0 && <p className="title">Twój Team:</p>}
+                    <div className="enemy-cards">
+                        {ally.length > 0 ? ally.map(item => <EnemyCard data={item} key={item.summonerName}
+                                                                       list={championsList}/>) : null}
+                    </div>
                 </div>
 
+                <div className="player__enemy">
+                    {enemy.length > 0 && <p className="title">Przeciwnicy:</p>}
+                    <div className="enemy-cards">
+                        {enemy.length > 0 ? enemy.map(item => <EnemyCard data={item} key={item.summonerName}
+                                                                         list={championsList}/>) : null}
+                    </div>
+                </div>
             </div>
         </div>
     );

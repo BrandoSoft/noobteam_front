@@ -3,7 +3,7 @@ import React from 'react';
 export const User = () => {
     return (
         <div>
-            users
+            Wkrótce panel użytkownika tu zagości :)
         </div>
     );
 };

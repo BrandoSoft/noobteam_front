@@ -3,8 +3,9 @@ import './Forms.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {setErrorMsg, setIsLoggedIn, setUserId, setUserName, setUserToken} from "../../redux/actions/user";
 import {RootState} from "../../redux/store";
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
+import { BiCommentError } from 'react-icons/bi';
 
 export const LoginForm = () => {
 
@@ -80,29 +81,36 @@ export const LoginForm = () => {
     };
 
     if (isLoggedIn) {
-        return <button onClick={logoutUser}> Wyloguj {userName}</button>
+        return <button onClick={logoutUser} className="login test">Wyloguj {userName} </button>
     }
 
     return (
-        <div className="loginForm">
-            {errorMsg && <div>{errorMsg}</div>}
-            <form onSubmit={handleLogin}>
-                <input
-                    type="text"
-                    placeholder="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <input
-                    type="password"
-                    placeholder="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <button type="submit">Log in</button>
-            </form>
-            <div><Link to="/register">or Register</Link></div>
-            <button onClick={handleLoginTestUser}> OR Login to test ACCOUNT!</button>
-        </div>
+        <>
+            <button onClick={handleLoginTestUser} className="login test"> Zaloguj na konto testowe</button>
+            {errorMsg && <div className="error">
+               <BiCommentError className="error__icon"/>
+                <div className="error__message">{errorMsg}</div></div>}
+
+            <div className="loginForm">
+                <div className="loginForm__form">
+                    <form onSubmit={handleLogin}>
+                        <input
+                            type="text"
+                            placeholder="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <input
+                            type="password"
+                            placeholder="hasło"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <button type="submit" className="login">Zaloguj</button>
+                    </form>
+                    <Link to="/register" className="register"> Rejestracja</Link>
+                </div>
+            </div>
+        </>
     );
 };
