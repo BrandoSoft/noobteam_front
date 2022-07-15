@@ -17,6 +17,7 @@ Już niedługo dokłądniejsze dane.
 
 Strona dostępna pod adresem:
 
+https://brandosoft.github.io/noobteam_front/
 
 # Techniczna część:
 
@@ -76,3 +77,7 @@ REACT_APP_DDRAGON=12.12.1
 - Zrobić readme z prawdziwego zdarzenia.
 - dodac masę funkcjonalności (na razie klucz api który mam, nie pozwala na więcej niż 20 requestów/sec), a to za mało by dokonać analizy przeciwników.
 - refactor apki, na przykład przeniesienie wszystkich apiCalls do osobnego pliku.
+- 
+### Known problems:
+- cors works for someones, someones are blocked...
+- avatars sometimes didnt works...
