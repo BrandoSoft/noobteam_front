@@ -3,6 +3,7 @@ import {useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
 import NewCharacter from "../NewCharacter/NewCharacter";
 import {RiotCharacterEntity} from 'types'
+import ErrorComponent from "../../utils/ErrorComponent";
 
 interface Props {
     refresh: () => {}
@@ -14,31 +15,37 @@ export const AddCharacter = ({refresh}: Props) => {
     const [name, setName] = useState("");
     const [character, setCharacter] = useState<RiotCharacterEntity | null>(null)
     const [randomCharacter, setRandomCharacter] = useState<RiotCharacterEntity | null>(null)
-    const [resError, setResError] = useState(null);
+    const [resError, setResError] = useState<string | null>('');
 
 
     const findCharacter = async (e: SyntheticEvent) => {
         e.preventDefault();
-        const res = await fetch(`${process.env.REACT_APP_BACKEND}/characters/find/${name}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'x-auth-token': userToken,
-                },
+
+        if (name.length > 1) {
+            const res = await fetch(`${process.env.REACT_APP_BACKEND}/characters/find/${name}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-auth-token': userToken,
+                    },
+                }
+            );
+            const data = await res.json()
+
+            if (res.status === 200) {
+                setCharacter(data)
             }
-        );
-        const data = await res.json()
+            if (res.status !== 200) {
+                setResError(data.errors[0].msg)
+                setTimeout(() => setResError(null), 3000)
 
-        if (res.status === 200) {
-            setCharacter(data)
-        }
-        if (res.status !== 200) {
-            setResError(data.errors[0].msg)
+            }
+            setName('');
+        } else {
+            setResError('zbyt krótka nazwa przywoływacza')
             setTimeout(() => setResError(null), 3000)
-
         }
-        setName('');
-    };
+    }
 
     const getRandomChamp = async () => {
         const res = await fetch(`${process.env.REACT_APP_BACKEND}/characters/random/player`, {
@@ -77,14 +84,12 @@ export const AddCharacter = ({refresh}: Props) => {
                         onChange={(e) => setName(e.target.value)}
                     />
                     <button type="submit" className="login">Szukaj</button>
+                    {resError && <ErrorComponent content={resError}/>}
                 </form>
                 <button onClick={getRandomChamp} className="login"> Lub wylosuj!</button>
-                {resError && <div>{resError}</div>}
-
 
             </div>
         </div>
     );
 };
 
-//@TODO Walidacja formularza (empty)

@@ -23,7 +23,6 @@ const EnemyCard = ({data, list}: any) => {
         }
     }
 
-    //@TODO Pobieranie historii meczy danego gracza niemożliwe, z pod ograniczeń aktualnego klucza API. Oczekuje na akceptację wniosku udostępnienia klucza developerskiego.
 
     useEffect(() => {
         // if (data) {
@@ -49,6 +48,8 @@ const EnemyCard = ({data, list}: any) => {
             const summonerLeague = await league.json()
             setLeagueInfo(summonerLeague)
 
+
+            //@TODO Pobieranie historii meczy danego gracza niemożliwe, z pod ograniczeń aktualnego klucza API. Oczekuje na akceptację wniosku udostępnienia klucza developerskiego.
 
             // setSummonerInfo(summonerData)
             //
@@ -80,15 +81,17 @@ const EnemyCard = ({data, list}: any) => {
     }, [])
 
     return (
-            <div className="enemy">
-                <p className="enemy__name">{data.summonerName}</p>
-                <img
-                    src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champName}.png`}
-                    alt=""/>
-                <>
-                    {leagueInfo.length > 0? leagueInfo.map( league=> <EnemyStats key={league.leagueId + league.summonerId} stats={league}/>) : <div>BRAK RANKINGU</div>}
-                    </>
-            </div>
+        <div className="enemy">
+            <p className="enemy__name">{data.summonerName}</p>
+            <img
+                src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champName}.png`}
+                alt=""/>
+            <>
+                {leagueInfo.length > 0 ? leagueInfo.map(league => <EnemyStats key={league.leagueId + league.summonerId}
+                                                                              stats={league}/>) :
+                    <div>BRAK RANKINGU</div>}
+            </>
+        </div>
 
     );
 }

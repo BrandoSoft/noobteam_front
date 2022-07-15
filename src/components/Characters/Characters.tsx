@@ -42,7 +42,6 @@ export const Characters = () => {
                          {characters.map((e: SimpleCharactersEntity) => <PlayerCard data={e} key={e.name} refresh={getPlayerList}/>)}
                     </>
                 }
-
                 <AddCharacter refresh={getPlayerList}/>
             </div>
         );

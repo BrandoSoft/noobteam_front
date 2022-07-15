@@ -5,16 +5,16 @@ import './PlayerCard.scss'
 import {useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
 import EnemyCard from "../EnemyCard/EnemyCard";
-import {BiCommentError} from "react-icons/bi";
+import ErrorComponent from "../../utils/ErrorComponent";
 
 
 interface Props {
-    data: SimpleCharactersEntity
+    data: SimpleCharactersEntity,
+    refresh: () => void
 }
 
-//@TODO resolve problem with prop type
 
-const PlayerCard = ({data, refresh}: any) => {
+const PlayerCard = ({data, refresh}: Props) => {
     const version = process.env.REACT_APP_DDRAGON;
 
     const {userId, userToken} = useSelector((store: RootState) => store.user);
@@ -76,7 +76,6 @@ const PlayerCard = ({data, refresh}: any) => {
         <div className="player">
             <div className="player__info">
                 <button onClick={checkGame}>Sprawdz mecz</button>
-
                 <p>{data.name}</p>
                 <img
                     src={`http://ddragon.leagueoflegends.com/cdn/12.12.1/img/profileicon/${data.profileIconId}.png`}
@@ -86,12 +85,8 @@ const PlayerCard = ({data, refresh}: any) => {
             </div>
             <div className="player__game">
                 {
-                    resMsg && <div className="error error-relative">
-                        <BiCommentError className="error__icon"/>
-                        <div className="error__message">{resMsg}</div>
-                    </div>
+                    resMsg && <ErrorComponent content={resMsg}/>
                 }
-
                 <div className="player__enemy">
                     {enemy.length > 0 && <p className="title">Przeciwnicy:</p>}
                     <div className="enemy-cards">
@@ -106,7 +101,6 @@ const PlayerCard = ({data, refresh}: any) => {
                                                                        list={championsList}/>) : null}
                     </div>
                 </div>
-
             </div>
         </div>
     );
