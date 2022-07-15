@@ -40,3 +40,32 @@ Na Twoim miejscu, zgankował bym Rengara lub Shyvanę... a od reszty, trzymał b
 
 ![](readme/enemy.jpg)
 
+### Instalacja:
+
+```dotenv
+npm install
+```
+
+.env:
+
+```dotenv
+REACT_APP_BACKEND=https://megak-nt.herokuapp.com
+REACT_APP_DDRAGON=12.12.1
+```
+
+lub jeśli posiadasz backend:
+- [@backend](https://github.com/BrandoSoft/noobteam_back)
+
+
+```dotenv
+
+REACT_APP_BACKEND=http://localhost:3000
+REACT_APP_DDRAGON=12.12.1
+```
+
+
+**Tech Stack**
+
+**Client:** React, Redux, SCSS
+
+**Server:** Express, Typescript
