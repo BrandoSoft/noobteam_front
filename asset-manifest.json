@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/noobteam_front/static/css/main.bddb8ec4.css",
+    "main.js": "/noobteam_front/static/js/main.72933e29.js",
+    "static/js/787.00cbf127.chunk.js": "/noobteam_front/static/js/787.00cbf127.chunk.js",
+    "static/media/Emblem_Challenger.png": "/noobteam_front/static/media/Emblem_Challenger.3849d806c40554771a13.png",
+    "static/media/Emblem_Grandmaster.png": "/noobteam_front/static/media/Emblem_Grandmaster.9ecb117f9d660e2f59f1.png",
+    "static/media/Emblem_Master.png": "/noobteam_front/static/media/Emblem_Master.3d8a5dee8297cd74678a.png",
+    "static/media/Emblem_Diamond.png": "/noobteam_front/static/media/Emblem_Diamond.12655e55e7c0380512fe.png",
+    "static/media/Emblem_Platinum.png": "/noobteam_front/static/media/Emblem_Platinum.bc5da7188d207934e97f.png",
+    "static/media/Emblem_Silver.png": "/noobteam_front/static/media/Emblem_Silver.578ee6bf63999c216821.png",
+    "static/media/Emblem_Gold.png": "/noobteam_front/static/media/Emblem_Gold.52e0060a3ed0528acde6.png",
+    "static/media/Emblem_Bronze.png": "/noobteam_front/static/media/Emblem_Bronze.77b0ae0ab362db53fdae.png",
+    "static/media/Emblem_Iron.png": "/noobteam_front/static/media/Emblem_Iron.7d28de28db05b6af1e46.png",
+    "index.html": "/noobteam_front/index.html",
+    "main.bddb8ec4.css.map": "/noobteam_front/static/css/main.bddb8ec4.css.map",
+    "main.72933e29.js.map": "/noobteam_front/static/js/main.72933e29.js.map",
+    "787.00cbf127.chunk.js.map": "/noobteam_front/static/js/787.00cbf127.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bddb8ec4.css",
+    "static/js/main.72933e29.js"
+  ]
+}
