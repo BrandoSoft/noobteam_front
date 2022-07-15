@@ -15,23 +15,23 @@ import Challenger from '../../img/tiers/Emblem_Challenger.png'
 const getImage = (tier: string) => {
     switch (tier) {
         case "GOLD":
-            return <img src={Gold} alt="tier badge, in this case its Gold Bage"/>
+            return <img src={Gold} alt="tier badge, in this case its Gold Badge"/>
         case "IRON":
-            return <img src={Iron} alt="tier badge, in this case its Iron Bage"/>
+            return <img src={Iron} alt="tier badge, in this case its Iron Badge"/>
         case "BRONZE":
-            return <img src={Bronze} alt="tier badge, in this case its Bronze Bage"/>
+            return <img src={Bronze} alt="tier badge, in this case its Bronze Badge"/>
         case "SILVER":
-            return <img src={Silver} alt="tier badge, in this case its Silver Bage"/>
+            return <img src={Silver} alt="tier badge, in this case its Silver Badge"/>
         case "PLATINUM":
-            return <img src={Platinum} alt="tier badge, in this case its Platinum Bage"/>
+            return <img src={Platinum} alt="tier badge, in this case its Platinum Badge"/>
         case "DIAMOND":
-            return <img src={Diamond} alt="tier badge, in this case its Diamond Bage"/>
+            return <img src={Diamond} alt="tier badge, in this case its Diamond Badge"/>
         case "MASTER":
-            return <img src={Master} alt="tier badge, in this case its Master Bage"/>
+            return <img src={Master} alt="tier badge, in this case its Master Badge"/>
         case "GRANDMASTER":
-            return <img src={Grandmaster} alt="tier badge, in this case its Grandmaster Bage"/>
+            return <img src={Grandmaster} alt="tier badge, in this case its Grandmaster Badge"/>
         case "CHALLENGER":
-            return <img src={Challenger} alt="tier badge, in this case its Challenger Bage"/>
+            return <img src={Challenger} alt="tier badge, in this case its Challenger Badge"/>
         default:
             return null
     }
