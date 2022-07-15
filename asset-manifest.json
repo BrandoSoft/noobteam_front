@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/noobteam_front/static/css/main.bddb8ec4.css",
-    "main.js": "/noobteam_front/static/js/main.72933e29.js",
+    "main.js": "/noobteam_front/static/js/main.645427f5.js",
     "static/js/787.00cbf127.chunk.js": "/noobteam_front/static/js/787.00cbf127.chunk.js",
     "static/media/Emblem_Challenger.png": "/noobteam_front/static/media/Emblem_Challenger.3849d806c40554771a13.png",
     "static/media/Emblem_Grandmaster.png": "/noobteam_front/static/media/Emblem_Grandmaster.9ecb117f9d660e2f59f1.png",
@@ -14,11 +14,11 @@
     "static/media/Emblem_Iron.png": "/noobteam_front/static/media/Emblem_Iron.7d28de28db05b6af1e46.png",
     "index.html": "/noobteam_front/index.html",
     "main.bddb8ec4.css.map": "/noobteam_front/static/css/main.bddb8ec4.css.map",
-    "main.72933e29.js.map": "/noobteam_front/static/js/main.72933e29.js.map",
+    "main.645427f5.js.map": "/noobteam_front/static/js/main.645427f5.js.map",
     "787.00cbf127.chunk.js.map": "/noobteam_front/static/js/787.00cbf127.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bddb8ec4.css",
-    "static/js/main.72933e29.js"
+    "static/js/main.645427f5.js"
   ]
 }
