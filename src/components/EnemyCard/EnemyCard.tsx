@@ -11,17 +11,19 @@ const EnemyCard = ({data, list}: any) => {
 
     const {userToken} = useSelector((store: RootState) => store.user);
     const [leagueInfo, setLeagueInfo] = useState<LeaguesEntity[] | []>([])
+    const [champName, setChampName] = useState<string>('')
+
 
     const version = process.env.REACT_APP_DDRAGON;
-    let champName = ''
 
-    for (let i in list) {
-        if (list[i].key == data.championId) {
-            champName = list[i].id
-        }
-    }
 
     useEffect(() => {
+        for (let i in list) {
+            if (list[i].key == data.championId) {
+                setChampName(list[i].id);
+            }
+        }
+
         // if (data) {
         (async () => {
             const res = await fetch(`${process.env.REACT_APP_BACKEND}/characters/find/${data.summonerName}`, {
