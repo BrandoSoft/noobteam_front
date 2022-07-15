@@ -42,7 +42,7 @@ export const AddCharacter = ({refresh}: Props) => {
             }
             setName('');
         } else {
-            setResError('zbyt krótka nazwa przywoływacza')
+            setResError('Nie zapomnij czegoś wpisać ;)')
             setTimeout(() => setResError(null), 3000)
         }
     }
@@ -87,7 +87,6 @@ export const AddCharacter = ({refresh}: Props) => {
                     {resError && <ErrorComponent content={resError}/>}
                 </form>
                 <button onClick={getRandomChamp} className="login"> Lub wylosuj!</button>
-
             </div>
         </div>
     );

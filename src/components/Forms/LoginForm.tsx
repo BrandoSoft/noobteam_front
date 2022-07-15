@@ -3,13 +3,14 @@ import './Forms.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {setErrorMsg, setIsLoggedIn, setUserId, setUserName, setUserToken} from "../../redux/actions/user";
 import {RootState} from "../../redux/store";
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 
 import { BiCommentError } from 'react-icons/bi';
 
 export const LoginForm = () => {
 
     const dispatch = useDispatch();
+    let navigate = useNavigate();
     const {isLoggedIn, userName, errorMsg} = useSelector((store: RootState) => store.user)
 
     const [email, setEmail] = useState("");
@@ -33,12 +34,13 @@ export const LoginForm = () => {
         console.log(userInfo.userId)
 
         if (response.status === 200) {
-            console.log('status to 200')
             localStorage.setItem('noob_team_user', userInfo.accessToken);
             dispatch(setUserToken(userInfo.accessToken));
             dispatch(setUserName(userInfo.name));
             dispatch(setIsLoggedIn(true));
             dispatch(setUserId(userInfo.userId))
+
+            navigate('/', {replace: true})
         }
         if (response.status !== 200) {
             dispatch(setErrorMsg(userInfo.errors[0].msg))
@@ -58,15 +60,15 @@ export const LoginForm = () => {
         })
 
         const userInfo = await response.json();
-        console.log(userInfo.userId)
 
         if (response.status === 200) {
-            console.log('status to 200')
             localStorage.setItem('noob_team_user', userInfo.accessToken);
             dispatch(setUserToken(userInfo.accessToken));
             dispatch(setUserName(userInfo.name));
             dispatch(setIsLoggedIn(true));
             dispatch(setUserId(userInfo.userId))
+
+            navigate('/', {replace: true})
         }
         if (response.status !== 200) {
             dispatch(setErrorMsg(userInfo.errors[0].msg))

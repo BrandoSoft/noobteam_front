@@ -5,8 +5,7 @@ import {useNavigate} from "react-router-dom";
 
 export const RegisterForm = () => {
     let navigate = useNavigate();
-    const dispatch = useDispatch();
-    const {registerError} = useSelector((store: RootState) => store.user)
+
 
 
     const [email, setEmail] = useState("");
@@ -32,8 +31,6 @@ export const RegisterForm = () => {
 
         const response = await registerUser.json()
 
-        console.log(registerUser.status)
-
         if (registerUser.status === 200) {
             setName('');
             setEmail('');
@@ -44,8 +41,7 @@ export const RegisterForm = () => {
         }
 
         if (registerUser.status !== 200) {
-            console.log('blad:', error)
-            setError(response.errors)
+         setError(response.errors)
         }
     };
 

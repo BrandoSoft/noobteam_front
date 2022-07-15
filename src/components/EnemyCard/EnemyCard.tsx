@@ -10,9 +10,7 @@ import EnemyStats from "./EnemyStats";
 const EnemyCard = ({data, list}: any) => {
 
     const {userToken} = useSelector((store: RootState) => store.user);
-
     const [leagueInfo, setLeagueInfo] = useState<LeaguesEntity[] | []>([])
-
 
     const version = process.env.REACT_APP_DDRAGON;
     let champName = ''
@@ -22,7 +20,6 @@ const EnemyCard = ({data, list}: any) => {
             champName = list[i].id
         }
     }
-
 
     useEffect(() => {
         // if (data) {

@@ -34,11 +34,10 @@ export const Characters = () => {
     if (isLoggedIn) {
         return (
             <div className="charactersContainer">
-
                 {
                     characters.length > 0 &&
                     <>
-                        <h2>Witaj {userName}: Lista postaci które obserwujesz:</h2>
+                        <h2>Witaj {userName}, lista postaci które obserwujesz:</h2>
                          {characters.map((e: SimpleCharactersEntity) => <PlayerCard data={e} key={e.name} refresh={getPlayerList}/>)}
                     </>
                 }
