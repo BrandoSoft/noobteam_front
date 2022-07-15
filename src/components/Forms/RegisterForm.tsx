@@ -1,6 +1,4 @@
 import React, {SyntheticEvent, useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "../../redux/store";
 import {useNavigate} from "react-router-dom";
 
 export const RegisterForm = () => {

@@ -1,4 +1,4 @@
-import React, {SyntheticEvent, useContext, useState} from 'react';
+import React, {SyntheticEvent, useState} from 'react';
 import './Forms.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {setErrorMsg, setIsLoggedIn, setUserId, setUserName, setUserToken} from "../../redux/actions/user";

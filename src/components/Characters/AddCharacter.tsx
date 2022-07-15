@@ -63,6 +63,7 @@ export const AddCharacter = ({refresh}: Props) => {
         }
         if (res.status !== 200) {
             setResError(data.errors[0].msg)
+            setTimeout(()=> setResError(null),3000)
         }
     }
 

@@ -25,7 +25,7 @@ const PlayerCard = ({data, refresh}: Props) => {
     const [enemy, setEnemy] = useState<any[]>([]);
 
     const removePlayerFromList = async () => {
-        const res = await fetch(`${process.env.REACT_APP_BACKEND}/characters/`, {
+         await fetch(`${process.env.REACT_APP_BACKEND}/characters/`, {
                 method: 'DELETE',
                 body: JSON.stringify({
                     name: data.name,
