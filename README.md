@@ -1,7 +1,7 @@
 
 # Always NOOB_TEAM!
 
-League of legends to zręcznościowa zespołowa gra, oparta w duzej mierze na zasadach "Papier, kamień, nożyce".
+League of legends to zręcznościowa zespołowa gra, oparta w dużej mierze na zasadach "Papier, kamień, nożyce".
 Nie daj się jednak zwieść jej zręcznościowemu charakterowi. Kluczem do zwycięstaw jest taktyka,
 dobranie z pośród ponad 100 postaci i kilkuset przedmiotów, takiego zestawu, który pokona przeciwników.
 
@@ -69,3 +69,10 @@ REACT_APP_DDRAGON=12.12.1
 **Client:** React, Redux, SCSS
 
 **Server:** Express, Typescript
+
+
+### Roadmap
+
+- Zrobić readme z prawdziwego zdarzenia.
+- dodac masę funkcjonalności (na razie klucz api który mam, nie pozwala na więcej niż 20 requestów/sec), a to za mało by dokonać analizy przeciwników.
+- refactor apki, na przykład przeniesienie wszystkich apiCalls do osobnego pliku.
