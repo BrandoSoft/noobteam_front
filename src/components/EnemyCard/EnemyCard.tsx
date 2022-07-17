@@ -8,6 +8,7 @@ import EnemyStats from "./EnemyStats";
 
 
 const EnemyCard = ({data, list}: any) => {
+    console.log(list)
 
     const {userToken} = useSelector((store: RootState) => store.user);
     const [leagueInfo, setLeagueInfo] = useState<LeaguesEntity[] | []>([])

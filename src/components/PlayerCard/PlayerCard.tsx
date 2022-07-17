@@ -39,11 +39,7 @@ const PlayerCard = ({data, refresh}: Props) => {
         );
         refresh()
     }
-    const getChampData = async () => {
-        const res = await fetch(`http://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json`)
-        const data = await res.json()
-        setChampionsList(data.data)
-    }
+
 
     const checkGame = async () => {
         const res = await fetch(`${process.env.REACT_APP_BACKEND}/characters/game/${data.id}`, {
@@ -71,7 +67,6 @@ const PlayerCard = ({data, refresh}: Props) => {
         const champData = await resChamp.json()
         setChampionsList(champData.data)
     }
-
     return (
         <div className="player">
             <div className="player__info">

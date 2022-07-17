@@ -7,33 +7,43 @@
   justify-content: space-between;
   background-color: $nav-main;
   box-shadow: 8px 8px 24px 0 rgba(66, 68, 90, 1);
+
   & ul {
     display: flex;
     justify-content: center;
     margin-left: 50px;
+
     & li {
-     margin: 10px;
+      margin: 10px;
       padding: 0 20px;
       height: 40px;
       list-style: none;
       border-radius: 10px;
-      & a{
+
+      & a {
         color: #fff;
         font-family: $ff-main;
         text-decoration: none;
         text-transform: uppercase;
         font-size: 20px;
         line-height: 40px;
-        }
+      }
+
       &:hover {
         background-color: $nav-highlight;
       }
 
     }
   }
-  & button{
+
+  & button {
     padding: 0 10px;
     margin: 0 10px;
 
+  }
+
+  &__version {
+    color: #fff;
+    font-size: 15px;
   }
 }
