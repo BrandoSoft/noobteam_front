@@ -95,7 +95,7 @@ const EnemyCard = ({data, list}: any) => {
 
 
     }, [champName, data.championId,data.summonerName, userToken, version])
-    console.log(leagueInfo)
+
 
     return (
         <div className="enemy">
@@ -104,7 +104,7 @@ const EnemyCard = ({data, list}: any) => {
                 src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champName}.png`}
                 alt=""/>}
             <>
-                {leagueInfo.length > 0 ? leagueInfo.filter(data => data.queueType != 'RANKED_TFT_DOUBLE_UP').map(league => <EnemyStats key={league.leagueId + league.summonerId}
+                {leagueInfo.length > 0 ? leagueInfo.filter(data => data.queueType !== 'RANKED_TFT_DOUBLE_UP').sort((a, b)=> b.queueType.length - a.queueType.length).map(league => <EnemyStats key={league.leagueId + league.summonerId}
                                                                               stats={league}/>) :
                     <div>BRAK RANKINGU</div>}
             </>
