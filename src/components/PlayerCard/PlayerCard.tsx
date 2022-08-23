@@ -15,17 +15,15 @@ interface Props {
 
 
 const PlayerCard = ({data, refresh}: Props) => {
-    const version = process.env.REACT_APP_DDRAGON;
 
     const {userId, userToken} = useSelector((store: RootState) => store.user);
 
     const [resMsg, setResMsg] = useState(null);
-    const [championsList, setChampionsList] = useState();
     const [ally, setAlly] = useState<any[]>([]);
     const [enemy, setEnemy] = useState<any[]>([]);
 
     const removePlayerFromList = async () => {
-         await fetch(`${process.env.REACT_APP_BACKEND}/characters/`, {
+        await fetch(`${process.env.REACT_APP_BACKEND}/characters/`, {
                 method: 'DELETE',
                 body: JSON.stringify({
                     name: data.name,
@@ -62,10 +60,7 @@ const PlayerCard = ({data, refresh}: Props) => {
 
 
         }
-        const resChamp = await fetch(`http://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json`)
 
-        const champData = await resChamp.json()
-        setChampionsList(champData.data)
     }
     return (
         <div className="player">
@@ -86,14 +81,14 @@ const PlayerCard = ({data, refresh}: Props) => {
                     {enemy.length > 0 && <p className="title">Przeciwnicy:</p>}
                     <div className="enemy-cards">
                         {enemy.length > 0 ? enemy.map(item => <EnemyCard data={item} key={item.summonerName}
-                                                                         list={championsList}/>) : null}
+                                                                         />) : null}
                     </div>
                 </div>
                 <div className="player__ally">
                     {ally.length > 0 && <p className="title">Twój Team:</p>}
                     <div className="enemy-cards">
                         {ally.length > 0 ? ally.map(item => <EnemyCard data={item} key={item.summonerName}
-                                                                       list={championsList}/>) : null}
+                        />) : null}
                     </div>
                 </div>
             </div>
