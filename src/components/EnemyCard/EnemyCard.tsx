@@ -58,10 +58,8 @@ const EnemyCard = ({data, list}: any) => {
 
                     if (champData.data[i].key === String(data.championId)) {
                         await setChampName(champData.data[i].id);
-                        console.log(champName)
-                    }
+                                           }
                 }
-                console.log('działam')
             }
             await nameFinder()
 
@@ -94,13 +92,11 @@ const EnemyCard = ({data, list}: any) => {
         })()
 
         // }
-        // console.log('lista championow', championsList)
+
 
     }, [champName, data.championId,data.summonerName, userToken, version])
 
-    // console.log('champname ',champName)
-    // console.log('adres:', `http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champName}.png`);
-    // console.log('przed',champName)
+
     return (
         <div className="enemy">
             <p className="enemy__name">{data.summonerName}</p>
