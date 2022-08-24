@@ -17,7 +17,7 @@ interface Props {
 const PlayerCard = ({data, refresh}: Props) => {
 
     const {userId, userToken} = useSelector((store: RootState) => store.user);
-
+    const version = process.env.REACT_APP_DDRAGON;
     const [resMsg, setResMsg] = useState(null);
     const [ally, setAlly] = useState<any[]>([]);
     const [enemy, setEnemy] = useState<any[]>([]);
@@ -68,7 +68,7 @@ const PlayerCard = ({data, refresh}: Props) => {
                 <button onClick={checkGame}>Sprawdz mecz</button>
                 <p>{data.name}</p>
                 <img
-                    src={`http://ddragon.leagueoflegends.com/cdn/12.12.1/img/profileicon/${data.profileIconId}.png`}
+                    src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/profileicon/${data.profileIconId}.png`}
                     alt=""/>
                 <p> LVL: {data.summonerLevel}</p>
                 <button onClick={removePlayerFromList}>Przestań obserwować</button>

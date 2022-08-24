@@ -20,6 +20,7 @@ export const App = () => {
         if (user) {
             dispatch(setUserToken(user));
         }
+
     }, []);
 
     return (

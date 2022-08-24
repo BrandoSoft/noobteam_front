@@ -12,6 +12,7 @@ interface Props {
 }
 
 const NewCharacter = ({characterData, show, clear}: Props) => {
+    const version = process.env.REACT_APP_DDRAGON;
 
     const {userToken, userId} = useSelector((store: RootState) => store.user);
     const [resMsg, setResMsg] = useState(null)
@@ -55,7 +56,7 @@ const NewCharacter = ({characterData, show, clear}: Props) => {
         <div className='newCharacterCard'>
             <p>{characterData.name}</p>
             <img
-                src={`http://ddragon.leagueoflegends.com/cdn/12.12.1/img/profileicon/${characterData.profileIconId}.png`}
+                src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/profileicon/${characterData.profileIconId}.png`}
                 alt=""/>
             <p>Summoner LVL: {characterData.summonerLevel}</p>
             <button onClick={addPlayerToDB}>Dodaj gracza do obserwowanych</button>
