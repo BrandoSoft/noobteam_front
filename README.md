@@ -17,7 +17,7 @@ Już niedługo dokłądniejsze dane.
 
 Strona dostępna pod adresem:
 
-https://brandosoft.github.io/noobteam_front/
+http://noobteam.kolodziejdev.pl/
 
 # Techniczna część:
 
@@ -60,8 +60,8 @@ lub jeśli posiadasz backend:
 
 ```dotenv
 
-REACT_APP_BACKEND=http://localhost:3000
-REACT_APP_DDRAGON=12.12.1
+REACT_APP_BACKEND=http://localhost:3001
+REACT_APP_DDRAGON=12.16.1
 ```
 
 
