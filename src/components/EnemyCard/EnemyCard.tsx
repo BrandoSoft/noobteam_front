@@ -5,7 +5,7 @@ import {useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
 import {LeaguesEntity} from 'types'
 import EnemyStats from "./EnemyStats";
-import {getSummonerData} from "../../apiCalls/characters";
+import {getSummonerData, getSummonerLeague} from "../../apiCalls/characters";
 import {getChampData} from "../../apiCalls/ddragon";
 
 
@@ -18,32 +18,13 @@ const EnemyCard = ({data, list}: any) => {
     const version = process.env.REACT_APP_DDRAGON;
 
 
-
-
-
     useEffect(() => {
-
-
-        // if (data) {
         (async () => {
 
-            // const resChamp = await fetch(`http://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json`)
-
-            // const champData = await resChamp.json()
-
             const champData = await getChampData();
-            console.log('champData to',champData)
-            const summonerData = await getSummonerData(data.summonerName, userToken)
+            const summonerData = await getSummonerData(data.summonerName, userToken);
+            const summonerLeague = await getSummonerLeague(summonerData.id, userToken);
 
-            const league = await fetch(`${process.env.REACT_APP_BACKEND}/characters/leagues/${summonerData.id}`, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'x-auth-token': userToken,
-                    },
-                }
-            );
-            const summonerLeague = await league.json()
             await setLeagueInfo(summonerLeague)
 
             const nameFinder = async () => {
