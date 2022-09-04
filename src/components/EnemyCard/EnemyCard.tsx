@@ -5,18 +5,18 @@ import {useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
 import {LeaguesEntity} from 'types'
 import EnemyStats from "./EnemyStats";
+import {getSummonerData} from "../../apiCalls/characters";
+import {getChampData} from "../../apiCalls/ddragon";
 
 
 const EnemyCard = ({data, list}: any) => {
-    // console.log(list)
-
 
     const {userToken} = useSelector((store: RootState) => store.user);
     const [leagueInfo, setLeagueInfo] = useState<LeaguesEntity[] | []>([]);
     const [champName, setChampName] = useState<string | null>(null);
 
-
     const version = process.env.REACT_APP_DDRAGON;
+
 
 
 
@@ -27,20 +27,13 @@ const EnemyCard = ({data, list}: any) => {
         // if (data) {
         (async () => {
 
-            const resChamp = await fetch(`http://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json`)
+            // const resChamp = await fetch(`http://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json`)
 
-            const champData = await resChamp.json()
+            // const champData = await resChamp.json()
 
-
-            const res = await fetch(`${process.env.REACT_APP_BACKEND}/characters/find/${data.summonerName}`, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'x-auth-token': userToken,
-                    },
-                }
-            );
-            const summonerData = await res.json()
+            const champData = await getChampData();
+            console.log('champData to',champData)
+            const summonerData = await getSummonerData(data.summonerName, userToken)
 
             const league = await fetch(`${process.env.REACT_APP_BACKEND}/characters/leagues/${summonerData.id}`, {
                     method: 'GET',
@@ -52,13 +45,14 @@ const EnemyCard = ({data, list}: any) => {
             );
             const summonerLeague = await league.json()
             await setLeagueInfo(summonerLeague)
-            const nameFinder = async ()=>{
+
+            const nameFinder = async () => {
 
                 for (let i in champData.data) {
 
                     if (champData.data[i].key === String(data.championId)) {
                         await setChampName(champData.data[i].id);
-                                           }
+                    }
                 }
             }
             await nameFinder()
@@ -66,35 +60,40 @@ const EnemyCard = ({data, list}: any) => {
             //@TODO Pobieranie historii meczy danego gracza niemożliwe, z pod ograniczeń aktualnego klucza API. Oczekuje na akceptację wniosku udostępnienia klucza developerskiego.
 
             // setSummonerInfo(summonerData)
+
+            //     const resGameHistory = await fetch(`${process.env.REACT_APP_BACKEND}/matches/playermatches/${summonerData.puuid}`, {
+            //             method: 'GET',
+            //             headers: {
+            //                 'Content-Type': 'application/json',
+            //                 'x-auth-token': userToken,
+            //             },
+            //         }
+            //     );
+            //     const gameHistory = await resGameHistory.json()
+            //     console.log('historia gier', summonerData.puuid, gameHistory)
             //
-            //             const resGameHistory = await fetch(`${process.env.REACT_APP_BACKEND}/matches/playermatches/${summonerData.puuid}`, {
-            //                     method: 'GET',
-            //                     headers: {
-            //                         'Content-Type': 'application/json',
-            //                         'x-auth-token': userToken,
-            //                     },
-            //                 }
-            //             );
-            //             const gameHistory = await resGameHistory.json()
-            //             // console.log(gameHistory)
             //
-            //             for (const e of gameHistory) {
-            //                 const resInfo = await fetch(`${process.env.REACT_APP_BACKEND}/matches/matchinfo/${e}`, {
-            //                         method: 'GET',
-            //                         headers: {
-            //                             'Content-Type': 'application/json',
-            //                             'x-auth-token': userToken,
-            //                         },
-            //                     }
-            //                 );
-            //                 setLast(await resInfo.json())
-            //             }
+            //
+            // for (const e of gameHistory) {
+            //     const resInfo = await fetch(`${process.env.REACT_APP_BACKEND}/matches/matchinfo/${e}`, {
+            //             method: 'GET',
+            //             headers: {
+            //                 'Content-Type': 'application/json',
+            //                 'x-auth-token': userToken,
+            //             },
+            //         }
+            //     );
+            //     const info = await resInfo.json()
+            //     console.log(e, info)
+            //     // setHistory({...history, info})
+            //     // console.log('historia',history)
+            // }
         })()
 
         // }
 
 
-    }, [champName, data.championId,data.summonerName, userToken, version])
+    }, [])
 
 
     return (
@@ -103,10 +102,13 @@ const EnemyCard = ({data, list}: any) => {
             {champName && <img
                 src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champName}.png`}
                 alt=""/>}
+            {/*<p>cos{history}</p>*/}
             <>
-                {leagueInfo.length > 0 ? leagueInfo.filter(data => data.queueType !== 'RANKED_TFT_DOUBLE_UP').sort((a, b)=> b.queueType.length - a.queueType.length).map(league => <EnemyStats key={league.leagueId + league.summonerId}
-                                                                              stats={league}/>) :
+                {leagueInfo.length > 0 ? leagueInfo.filter(data => data.queueType !== 'RANKED_TFT_DOUBLE_UP').sort((a, b) => b.queueType.length - a.queueType.length).map(league =>
+                        <EnemyStats key={league.leagueId + league.summonerId}
+                                    stats={league}/>) :
                     <div>BRAK RANKINGU</div>}
+
             </>
         </div>
 

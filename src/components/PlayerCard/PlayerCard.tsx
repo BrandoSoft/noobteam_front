@@ -78,14 +78,14 @@ const PlayerCard = ({data, refresh}: Props) => {
                     resMsg && <ErrorComponent content={resMsg}/>
                 }
                 <div className="player__enemy">
-                    {enemy.length > 0 && <p className="title">Przeciwnicy:</p>}
+                    {enemy.length > 0 && <p className="title">Twój Team:</p>}
                     <div className="enemy-cards">
                         {enemy.length > 0 ? enemy.map(item => <EnemyCard data={item} key={item.summonerName}
                                                                          />) : null}
                     </div>
                 </div>
                 <div className="player__ally">
-                    {ally.length > 0 && <p className="title">Twój Team:</p>}
+                    {ally.length > 0 && <p className="title">Przeciwnicy:</p>}
                     <div className="enemy-cards">
                         {ally.length > 0 ? ally.map(item => <EnemyCard data={item} key={item.summonerName}
                         />) : null}
