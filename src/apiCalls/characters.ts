@@ -3,7 +3,7 @@
 //TODO api callls will be moved here in the future
 
 
-export const getPlayerList = async (userToken: string, userId:string) => {
+export const getPlayerList = async (userId:string, userToken: string) => {
     const res = await fetch(`${process.env.REACT_APP_BACKEND}/characters/${userId}`, {
             method: 'GET',
             headers: {
@@ -12,8 +12,7 @@ export const getPlayerList = async (userToken: string, userId:string) => {
             },
         }
     );
-    const characterList = await res.json()
-
+    return await res.json()
 }
 
 export const getSummonerData = async (summonerName: string, userToken:string) =>{

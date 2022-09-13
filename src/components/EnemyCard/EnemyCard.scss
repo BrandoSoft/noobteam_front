@@ -4,7 +4,7 @@
 .enemy{
   display: flex;
   width: 100%;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   background-color: $bgc-main;
   border-radius: 10px;
@@ -14,7 +14,6 @@
 }
 
 .stats{
-
   margin-top: 10px;
   &__que{
     border-top: 2px solid $nav-main ;
