@@ -79,10 +79,12 @@ const EnemyCard = ({data, list, displayStyle}: any) => {
 
     return (
         <div className={displayStyle}>
+            <div>
             <p>{data.summonerName}</p>
-            {champName && <img
+            {champName && <img className="enemyImg"
                 src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champName}.png`}
                 alt=""/>}
+            </div>
             {/*<p>cos{history}</p>*/}
             <div>
                 {leagueInfo.length > 0 ? leagueInfo.filter(data => data.queueType === 'RANKED_SOLO_5x5').sort((a, b) => b.queueType.length - a.queueType.length).map(league =>
