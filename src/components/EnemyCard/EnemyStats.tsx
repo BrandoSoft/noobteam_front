@@ -57,18 +57,18 @@ const EnemyStats = ({stats}: Props) => {
 
     return (
         <div className="stats">
-            <div className="stats__que">
+            <div>
                 {getType(stats.queueType)}
             </div>
-            <div className="stats__tier">
-                <div className="stats__tier__left">
+            <div>
+                <div>
                     {getImage(stats.tier)}
                     LP: {stats.leaguePoints}
-                        W: <span className="win"> {stats.wins}</span>
-                        L: <span className="lose"> {stats.losses}</span>
+                        W: <span > {stats.wins}</span>
+                        L: <span> {stats.losses}</span>
                     </div>
 
-                <p className="stats__tier__rank">{stats.tier} {stats.rank}</p>
+                <p>{stats.tier} {stats.rank}</p>
 
             </div>
 

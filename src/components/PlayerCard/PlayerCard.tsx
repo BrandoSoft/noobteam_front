@@ -80,14 +80,14 @@ const PlayerCard = ({data, refresh}: Props) => {
                 <div className="player__enemy">
                     {enemy.length > 0 && <p className="title">Twój Team:</p>}
                     <div className="enemy-cards">
-                        {enemy.length > 0 ? enemy.map(item => <EnemyCard data={item} key={item.summonerName}
+                        {enemy.length > 0 ? enemy.map(item => <EnemyCard data={item} key={item.summonerName} displayStyle={"enemy reverse"}
                                                                          />) : null}
                     </div>
                 </div>
                 <div className="player__ally">
                     {ally.length > 0 && <p className="title">Przeciwnicy:</p>}
                     <div className="enemy-cards">
-                        {ally.length > 0 ? ally.map(item => <EnemyCard data={item} key={item.summonerName}
+                        {ally.length > 0 ? ally.map(item => <EnemyCard data={item} key={item.summonerName} displayStyle={"enemy"}
                         />) : null}
                     </div>
                 </div>

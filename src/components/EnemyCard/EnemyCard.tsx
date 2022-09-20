@@ -9,7 +9,7 @@ import {getSummonerData, getSummonerLeague} from "../../apiCalls/characters";
 import {getChampData} from "../../apiCalls/ddragon";
 
 
-const EnemyCard = ({data, list}: any) => {
+const EnemyCard = ({data, list, displayStyle}: any) => {
 
     const {userToken} = useSelector((store: RootState) => store.user);
     const [leagueInfo, setLeagueInfo] = useState<LeaguesEntity[] | []>([]);
@@ -78,19 +78,20 @@ const EnemyCard = ({data, list}: any) => {
 
 
     return (
-        <div className="enemy">
-            <p className="enemy__name">{data.summonerName}</p>
+        <div className={displayStyle}>
+            <p>{data.summonerName}</p>
             {champName && <img
                 src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champName}.png`}
                 alt=""/>}
             {/*<p>cos{history}</p>*/}
-            <>
-                {leagueInfo.length > 0 ? leagueInfo.filter(data => data.queueType !== 'RANKED_TFT_DOUBLE_UP').sort((a, b) => b.queueType.length - a.queueType.length).map(league =>
+            <div>
+                {leagueInfo.length > 0 ? leagueInfo.filter(data => data.queueType === 'RANKED_SOLO_5x5').sort((a, b) => b.queueType.length - a.queueType.length).map(league =>
                         <EnemyStats key={league.leagueId + league.summonerId}
                                     stats={league}/>) :
                     <div>BRAK RANKINGU</div>}
+    {/*lub data.queueType !== 'RANKED_TFT_DOUBLE_UP'*/}
 
-            </>
+            </div>
         </div>
 
     );

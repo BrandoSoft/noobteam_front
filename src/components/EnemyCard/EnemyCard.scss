@@ -4,50 +4,23 @@
 .enemy{
   display: flex;
   width: 100%;
+  height:200px;
   flex-direction: row;
-  align-items: center;
-  background-color: $bgc-main;
+  align-items: flex-start;
+  background-color: pink;
   border-radius: 10px;
+    border: 2px solid darkgreen;
   & img{
 
   }
 }
-
-.stats{
-  margin-top: 10px;
-  &__que{
-    border-top: 2px solid $nav-main ;
-    border-right: 2px solid $nav-main ;
-    margin-bottom: 10px;
-  }
-  &__tier{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-    &__rank{
-      align-items: flex-start;
-      padding: 0 10px;
-      border-left: 2px solid $nav-main ;
-      //border-bottom: 2px solid $nav-main ;
-      writing-mode: vertical-rl;
-      text-orientation: mixed;
-    }
-    &__left{
-      padding: 15px;
-      border-bottom: 2px solid $nav-main ;
-      border-left: 2px solid $nav-main ;
-    }
-  }
+.reverse{
+  flex-direction: row-reverse;
 }
 
-.score{
-  font-weight: 900;
-}
+.player__ally{
+  align-items: flex-start;
+}.player__enemy{
+  align-items: flex-end;
 
-.win{
-  color: darkgreen;
-}
-.lose{
-  color: red;
 }
