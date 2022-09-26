@@ -7,6 +7,7 @@ import {RootState} from "../../redux/store";
 import EnemyCard from "../EnemyCard/EnemyCard";
 import ErrorComponent from "../../utils/ErrorComponent";
 import {getParticipantsList} from "../../apiCalls/playerInfo";
+import {removePlayer} from "../../apiCalls/characters";
 
 
 interface Props {
@@ -24,18 +25,7 @@ const PlayerCard = ({data, refresh}: Props) => {
     const [enemy, setEnemy] = useState<any[]>([]);
 
     const removePlayerFromList = async () => {
-        await fetch(`${process.env.REACT_APP_BACKEND}/characters/`, {
-                method: 'DELETE',
-                body: JSON.stringify({
-                    name: data.name,
-                    userId: userId
-                }),
-                headers: {
-                    'Content-Type': 'application/json',
-                    'x-auth-token': userToken,
-                },
-            }
-        );
+            await removePlayer(data.name, userId, userToken)
         refresh()
     }
 
