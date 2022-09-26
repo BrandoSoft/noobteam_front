@@ -24,6 +24,7 @@ export const getSummonerData = async (summonerName: string, userToken:string) =>
             },
         }
     );
+    console.log(`wywołanie getSummonerData`)
     return await res.json()
 }
 
@@ -36,6 +37,7 @@ export const getSummonerLeague = async (summonerId: string, userToken: string) =
             },
         }
     );
+    console.log(`wywołanie getSummonerLeague`)
     return await res.json()
 }
 

@@ -68,10 +68,7 @@ const EnemyStats = ({stats}: Props) => {
                         W: <span > {stats.wins} </span>
                         L: <span> {stats.losses} </span>
                     </div>
-
-
-
-            </div>
+                            </div>
 
         </div>
     );
