@@ -25,7 +25,7 @@ const PlayerCard = ({data, refresh}: Props) => {
     const [enemy, setEnemy] = useState<any[]>([]);
 
     const removePlayerFromList = async () => {
-            await removePlayer(data.name, userId, userToken)
+        await removePlayer(data.name, userId, userToken)
         refresh()
     }
 
@@ -59,16 +59,19 @@ const PlayerCard = ({data, refresh}: Props) => {
                     resMsg && <ErrorComponent content={resMsg}/>
                 }
                 <div className="player__enemy">
-                    {enemy.length > 0 && <p className="title">Twój Team:</p>}
+                    {enemy.length > 0 && <p className="title">Przeciwnicy:</p>}
                     <div className="enemy-cards">
-                        {enemy.length > 0 ? enemy.map(item => <EnemyCard data={item} key={item.summonerName} displayStyle={"enemy reverse"}
-                                                                         />) : null}
+                        {enemy.length > 0 ? enemy.map(item => <EnemyCard data={item} key={item.summonerName}
+                                                                         displayStyle={"enemy reverse"}
+                        />) : null}
                     </div>
                 </div>
                 <div className="player__ally">
-                    {ally.length > 0 && <p className="title">Przeciwnicy:</p>}
+                    {ally.length > 0 && <p className="title">
+                        Twój Team:</p>}
                     <div className="enemy-cards">
-                        {ally.length > 0 ? ally.map(item => <EnemyCard data={item} key={item.summonerName} displayStyle={"enemy"}
+                        {ally.length > 0 ? ally.map(item => <EnemyCard data={item} key={item.summonerName}
+                                                                       displayStyle={"enemy"}
                         />) : null}
                     </div>
                 </div>
