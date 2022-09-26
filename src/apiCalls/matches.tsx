@@ -1,6 +1,6 @@
 export const getHistoryGamesIds = async (puuid: string, userToken: string): Promise<string[]> => {
 
-    const resGameHistory = await fetch(`${process.env.REACT_APP_BACKEND}/matches/playermatches/${puuid}`, {
+    const res = await fetch(`${process.env.REACT_APP_BACKEND}/matches/playermatches/${puuid}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -8,5 +8,24 @@ export const getHistoryGamesIds = async (puuid: string, userToken: string): Prom
             },
         }
     );
-    return await resGameHistory.json()
+    return await res.json()
+}
+
+export const getGameScore = async (gameIds: string[], userToken:string) => {
+    const gameScores:string[] = [];
+
+    for (const gameId of gameIds) {
+        const res = await fetch(`${process.env.REACT_APP_BACKEND}/matches/matchinfo/${gameId}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-auth-token': userToken,
+                },
+            }
+        );
+    gameScores.push(await res.json())
+
+    }
+
+    return gameScores;
 }

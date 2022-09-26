@@ -1,7 +1,8 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
-import {getSummonerData} from "../../apiCalls/characters";
+import {getGameScore, getHistoryGamesIds} from "../../apiCalls/matches";
+import EnemyCard from "./EnemyCard";
 
 interface Props {
     puuid: string;
@@ -9,50 +10,30 @@ interface Props {
 
 const EnemyHistory = ({puuid}: Props) => {
     const {userToken} = useSelector((store: RootState) => store.user);
-        useEffect(() => {
 
-            //@TODO Pobieranie historii meczy danego gracza niemożliwe, z pod ograniczeń aktualnego klucza API. Oczekuje na akceptację wniosku udostępnienia klucza developerskiego.
+    const [list, setList]= useState<string[]>([]);
+
+    useEffect(() => {
             (async () => {
                 try {
+                    const gameHistoryIds = await getHistoryGamesIds(puuid, userToken)
 
-                    const resGameHistory = await fetch(`${process.env.REACT_APP_BACKEND}/matches/playermatches/${puuid}`, {
-                            method: 'GET',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'x-auth-token': userToken,
-                            },
-                        }
-                    );
-                    const gameHistory = await resGameHistory.json()
-                    console.log(`historia gier`,gameHistory)
+                    const gamesHistoryList = await getGameScore(gameHistoryIds, userToken);
 
+                    // console.log(gamesHistoryList[1])
 
+                    await setList(gamesHistoryList)
                 } catch (e) {
                     console.log(e)
                 }
-
-                //     for (const e of gameHistory) {
-                //         const resInfo = await fetch(`${process.env.REACT_APP_BACKEND}/matches/matchinfo/${e}`, {
-                //                 method: 'GET',
-                //                 headers: {
-                //                     'Content-Type': 'application/json',
-                //                     'x-auth-token': userToken,
-                //                 },
-                //             }
-                //         );
-                //         const info = await resInfo.json()
-                //         console.log(e, info)
-                //         // setHistory({...history, info})
-                //         // console.log('historia',history)
-                //     }
             })()
 
         }, []
     )
-
+    console.log(`lista`,list)
     return (
         <div>
-            historia gier
+            {list && list.map(item => <div key={item.name}>{item.name}</div>)}
         </div>
     );
 
