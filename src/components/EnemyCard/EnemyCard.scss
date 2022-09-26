@@ -6,7 +6,7 @@
   width: 100%;
   height:200px;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   background-color: pink;
   border-radius: 10px;
     border: 2px solid darkgreen;
@@ -26,4 +26,9 @@
 
  .enemyImg{
    display: flex;
+ }
+ .nameAndImg{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
  }

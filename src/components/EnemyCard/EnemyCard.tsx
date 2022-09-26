@@ -79,7 +79,7 @@ const EnemyCard = ({data, list, displayStyle}: any) => {
 
     return (
         <div className={displayStyle}>
-            <div>
+            <div className="nameAndImg">
             <p>{data.summonerName}</p>
             {champName && <img className="enemyImg"
                 src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champName}.png`}

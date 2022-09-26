@@ -6,6 +6,7 @@ import {useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
 import EnemyCard from "../EnemyCard/EnemyCard";
 import ErrorComponent from "../../utils/ErrorComponent";
+import {getParticipantsList} from "../../apiCalls/playerInfo";
 
 
 interface Props {
@@ -40,25 +41,15 @@ const PlayerCard = ({data, refresh}: Props) => {
 
 
     const checkGame = async () => {
-        const res = await fetch(`${process.env.REACT_APP_BACKEND}/characters/game/${data.id}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'x-auth-token': userToken,
-                },
-            }
-        );
 
-        const infoData = await res.json()
+        const {info, status} = await getParticipantsList(data.id, userToken)
 
-        if (res.status === 400) {
-            setResMsg(infoData.errors[0].msg)
+        if (status === 400) {
+            setResMsg(info.errors[0].msg)
             setTimeout(() => setResMsg(null), 3000)
         } else {
-            setAlly(infoData.participants.filter((e: any) => e.teamId === 100))
-            setEnemy(infoData.participants.filter((e: any) => e.teamId === 200))
-
-
+            setAlly(info.participants.filter((e: any) => e.teamId === 100))
+            setEnemy(info.participants.filter((e: any) => e.teamId === 200))
         }
 
     }
