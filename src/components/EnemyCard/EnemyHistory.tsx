@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
 import {getGameScore, getHistoryGamesIds} from "../../apiCalls/matches";
+import { v4 as uuidv4 } from 'uuid';
 
 import './EnemyCard.scss'
 
@@ -40,7 +41,7 @@ const EnemyHistory = ({puuid}: Props) => {
     console.log(`lista`,list)
     return (
         <div className="history">
-            {list && list.map(item =>( <div key={puuid+item.name} className="history__container">
+            {list && list.map(item =>( <div key={uuidv4()} className="history__container">
                 <img className="history__small"
                     src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${item.name}.png`}
                     alt=""/>

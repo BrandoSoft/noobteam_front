@@ -13,21 +13,21 @@ export const getHistoryGamesIds = async (puuid: string, userToken: string): Prom
     return await res.json()
 }
 
-export const getGameScore = async (gameIds: string[], userToken:string) => {
-    const gameScores:Scores[] = [];
+export const getGameScore = async (gameIds: string[], userToken: string) => {
+    const gameScores: Scores[] = [];
 
     for (const gameId of gameIds) {
-        const res = await fetch(`${process.env.REACT_APP_BACKEND}/matches/matchinfo/${gameId}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'x-auth-token': userToken,
-                },
-            }
-        );
-    gameScores.push(await res.json())
 
-    }
+            const res = await fetch(`${process.env.REACT_APP_BACKEND}/matches/matchinfo/${gameId}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-auth-token': userToken,
+                    },
+                }
+            );
+            gameScores.push(await res.json())
+            }
 
     return gameScores;
 }
