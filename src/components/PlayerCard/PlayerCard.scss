@@ -3,19 +3,15 @@
 .player {
   display: flex;
   min-width:50%;
-
+  &__avatar{
+    width: 100px;
+  }
   &__info {
     display: flex;
     flex-direction: column;
     width: 20%;
     margin: 10px;
     align-items: center;
-  }
-
-  & img {
-    margin: 10px;
-    width: 100px;
-    height: 100px;
   }
 
   button {
@@ -59,4 +55,3 @@
   position: relative;
   top: 0;
 }
-

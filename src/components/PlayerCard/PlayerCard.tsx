@@ -48,7 +48,7 @@ const PlayerCard = ({data, refresh}: Props) => {
             <div className="player__info">
                 <button onClick={checkGame}>Sprawdz mecz</button>
                 <p>{data.name}</p>
-                <img
+                <img className="player__avatar"
                     src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/profileicon/${data.profileIconId}.png`}
                     alt=""/>
                 <p> LVL: {data.summonerLevel}</p>

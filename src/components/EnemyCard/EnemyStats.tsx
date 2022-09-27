@@ -1,4 +1,5 @@
 import React from 'react';
+import './EnemyCard.scss'
 
 import {LeaguesEntity} from 'types'
 
@@ -15,23 +16,23 @@ import Challenger from '../../img/tiers/Emblem_Challenger.png'
 const getImage = (tier: string) => {
     switch (tier) {
         case "GOLD":
-            return <img src={Gold} alt="tier badge, in this case its Gold Badge"/>
+            return <img className="stats__badgeImg" src={Gold} alt="tier badge, in this case its Gold Badge"/>
         case "IRON":
-            return <img src={Iron} alt="tier badge, in this case its Iron Badge"/>
+            return <img className="stats__badgeImg" src={Iron} alt="tier badge, in this case its Iron Badge"/>
         case "BRONZE":
-            return <img src={Bronze} alt="tier badge, in this case its Bronze Badge"/>
+            return <img className="stats__badgeImg" src={Bronze} alt="tier badge, in this case its Bronze Badge"/>
         case "SILVER":
-            return <img src={Silver} alt="tier badge, in this case its Silver Badge"/>
+            return <img className="stats__badgeImg" src={Silver} alt="tier badge, in this case its Silver Badge"/>
         case "PLATINUM":
-            return <img src={Platinum} alt="tier badge, in this case its Platinum Badge"/>
+            return <img className="stats__badgeImg" src={Platinum} alt="tier badge, in this case its Platinum Badge"/>
         case "DIAMOND":
-            return <img src={Diamond} alt="tier badge, in this case its Diamond Badge"/>
+            return <img className="stats__badgeImg" src={Diamond} alt="tier badge, in this case its Diamond Badge"/>
         case "MASTER":
-            return <img src={Master} alt="tier badge, in this case its Master Badge"/>
+            return <img className="stats__badgeImg" src={Master} alt="tier badge, in this case its Master Badge"/>
         case "GRANDMASTER":
-            return <img src={Grandmaster} alt="tier badge, in this case its Grandmaster Badge"/>
+            return <img className="stats__badgeImg" src={Grandmaster} alt="tier badge, in this case its Grandmaster Badge"/>
         case "CHALLENGER":
-            return <img src={Challenger} alt="tier badge, in this case its Challenger Badge"/>
+            return <img className="stats__badgeImg" src={Challenger} alt="tier badge, in this case its Challenger Badge"/>
         default:
             return null
     }

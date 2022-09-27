@@ -1,3 +1,5 @@
+import {Scores} from "../components/EnemyCard/EnemyHistory";
+
 export const getHistoryGamesIds = async (puuid: string, userToken: string): Promise<string[]> => {
 
     const res = await fetch(`${process.env.REACT_APP_BACKEND}/matches/playermatches/${puuid}`, {
@@ -12,7 +14,7 @@ export const getHistoryGamesIds = async (puuid: string, userToken: string): Prom
 }
 
 export const getGameScore = async (gameIds: string[], userToken:string) => {
-    const gameScores:string[] = [];
+    const gameScores:Scores[] = [];
 
     for (const gameId of gameIds) {
         const res = await fetch(`${process.env.REACT_APP_BACKEND}/matches/matchinfo/${gameId}`, {
