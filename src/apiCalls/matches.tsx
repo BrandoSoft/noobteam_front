@@ -13,10 +13,10 @@ export const getHistoryGamesIds = async (puuid: string, userToken: string): Prom
     return await res.json()
 }
 
-export const getGameScore = async (gameIds: string[], userToken: string) => {
+export const getGameScore = async (gamesIds: string[], userToken: string) => {
     const gameScores: Scores[] = [];
 
-    for (const gameId of gameIds) {
+    for (const gameId of gamesIds) {
 
             const res = await fetch(`${process.env.REACT_APP_BACKEND}/matches/matchinfo/${gameId}`, {
                     method: 'GET',
