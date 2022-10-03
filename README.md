@@ -17,7 +17,7 @@ Już niedługo dokłądniejsze dane.
 
 Strona dostępna pod adresem:
 
-http://noobteam.kolodziejdev.pl/
+https://noobteam.kolodziejdev.pl/
 
 # Techniczna część:
 

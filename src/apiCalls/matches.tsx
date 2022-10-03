@@ -60,10 +60,10 @@ export const getGameScore = async (gamesIds: string[], userToken: string) => {
     for (const gameId of gamesIds) {
         const res = await apiCall(gameId)
         console.log('res z apicall',res.data)
-        if (res.data !== "") {
+        if (res.data !== "Too many request, APIKEY cant handle so much") {
             gameScores.push(await res.data)
         }
-        if (res.data === "") {
+        if (res.data === "Too many request, APIKEY cant handle so much") {
             gameScores.push(badShaco)
         }
     }
