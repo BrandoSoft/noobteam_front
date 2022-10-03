@@ -1,9 +1,9 @@
 import {Scores} from "../components/EnemyCard/EnemyHistory";
 import axios from "axios";
 
-export const getHistoryGamesIds = async (puuid: string, userToken: string): Promise<string[]> => {
+export const getHistoryGamesIds = async (puuid: string, userToken: string, counter:number): Promise<string[]> => {
 
-    const res = await fetch(`${process.env.REACT_APP_BACKEND}/matches/playermatches/${puuid}`, {
+    const res = await fetch(`${process.env.REACT_APP_BACKEND}/matches/playermatches/${puuid}/${counter}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -13,25 +13,6 @@ export const getHistoryGamesIds = async (puuid: string, userToken: string): Prom
     );
     return await res.json()
 }
-
-// export const getGameScore = async (gamesIds: string[], userToken: string) => {
-//     const gameScores: Scores[] = [];
-//
-//     for (const gameId of gamesIds) {
-//                 const res = await fetch(`${process.env.REACT_APP_BACKEND}/matches/matchinfo/${gameId}`, {
-//                         method: 'GET',
-//                         headers: {
-//                             'Content-Type': 'application/json',
-//                             'x-auth-token': userToken,
-//                         },
-//                     }
-//                 );
-//                 console.log(await res.json())
-//                 gameScores.push(await res.json())
-//             }
-//
-//     return gameScores;
-// }
 
 export const getGameScore = async (gamesIds: string[], userToken: string) => {
     const gameScores: Scores[] = [];

@@ -18,7 +18,6 @@ const EnemyCard = ({data, list, displayStyle}: any) => {
     const [puuid, setPuuid] = useState<string| null>(null);
 
 
-
     const version = process.env.REACT_APP_DDRAGON;
 
 
@@ -54,8 +53,7 @@ const EnemyCard = ({data, list, displayStyle}: any) => {
             {champName && <img className="enemyImg"
                 src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champName}.png`}
                 alt=""/>}
-            </div>
-            {/*<p>cos{history}</p>*/}
+                            </div>
             <div>
                 {leagueInfo.length > 0 ? leagueInfo.filter(data => data.queueType === 'RANKED_SOLO_5x5').sort((a, b) => b.queueType.length - a.queueType.length).map(league =>
                         <EnemyStats key={league.leagueId + league.summonerId}

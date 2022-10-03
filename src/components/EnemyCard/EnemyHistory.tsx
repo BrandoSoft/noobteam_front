@@ -26,9 +26,10 @@ const EnemyHistory = ({puuid}: Props) => {
     const [list, setList]= useState<Scores[]>([]);
 
     useEffect(() => {
+
             (async () => {
                 try {
-                    const gameHistoryIds = await getHistoryGamesIds(puuid, userToken)
+                    const gameHistoryIds = await getHistoryGamesIds(puuid, userToken, 3)
                     const gamesHistoryList = await getGameScore(gameHistoryIds, userToken);
                     await setList(gamesHistoryList)
                 } catch (e) {
@@ -36,7 +37,7 @@ const EnemyHistory = ({puuid}: Props) => {
                 }
             })()
 
-        }, []
+       }, []
     )
     console.log(`lista`,list)
     return (

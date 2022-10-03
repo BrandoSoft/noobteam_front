@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './EnemyCard.scss'
 
 import {LeaguesEntity} from 'types'
@@ -12,6 +12,7 @@ import Master from '../../img/tiers/Emblem_Master.png'
 import Grandmaster from '../../img/tiers/Emblem_Grandmaster.png'
 import Bronze from '../../img/tiers/Emblem_Bronze.png'
 import Challenger from '../../img/tiers/Emblem_Challenger.png'
+import SummonerHistoryGames from "./SummonerHistoryGames";
 
 const getImage = (tier: string) => {
     switch (tier) {
@@ -30,9 +31,11 @@ const getImage = (tier: string) => {
         case "MASTER":
             return <img className="stats__badgeImg" src={Master} alt="tier badge, in this case its Master Badge"/>
         case "GRANDMASTER":
-            return <img className="stats__badgeImg" src={Grandmaster} alt="tier badge, in this case its Grandmaster Badge"/>
+            return <img className="stats__badgeImg" src={Grandmaster}
+                        alt="tier badge, in this case its Grandmaster Badge"/>
         case "CHALLENGER":
-            return <img className="stats__badgeImg" src={Challenger} alt="tier badge, in this case its Challenger Badge"/>
+            return <img className="stats__badgeImg" src={Challenger}
+                        alt="tier badge, in this case its Challenger Badge"/>
         default:
             return null
     }
@@ -55,6 +58,15 @@ interface Props {
 }
 
 const EnemyStats = ({stats}: Props) => {
+    const [showInfo, setShowInfo] = useState(false)
+    console.log(stats)
+
+    const showModal = () => {
+        setShowInfo(true)
+    }
+    const hideModal = () =>{
+        setShowInfo(false)
+    }
 
     return (
         <div className="stats">
@@ -66,11 +78,12 @@ const EnemyStats = ({stats}: Props) => {
                 <div>
                     {getImage(stats.tier)}
                     LP: {stats.leaguePoints}
-                        W: <span > {stats.wins} </span>
-                        L: <span> {stats.losses} </span>
-                    </div>
-                            </div>
-
+                    W: <span> {stats.wins} </span>
+                    L: <span> {stats.losses} </span>
+                </div>
+            </div>
+            <button onClick={showModal}> Szczegółowe info</button>
+            {showInfo && <SummonerHistoryGames info={stats} hideModal={hideModal}/>}
         </div>
     );
 };
