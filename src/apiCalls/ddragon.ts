@@ -6,3 +6,7 @@ export const getChampData = async (): Promise<any>=>{
 
     return await resChamp.json()
 }
+
+export const getPlayerAvatar = (name: string): string =>{
+    return `http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${name}.png`
+}
