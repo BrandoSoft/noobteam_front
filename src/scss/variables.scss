@@ -1,5 +1,6 @@
 // Google Fonts
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@400;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@600;700;800&family=Inter:wght@500;700&display=swap');
 
 //breakpoints
 $bp-mobile: 375px;
@@ -9,8 +10,9 @@ $bp-desktop: 1440px;
 
 
 // Fonts
-$ff-main: 'Roboto', sans-serif;
-$ff-secondary: 'Roboto Mono', monospace;
+$ff-main: 'Exo', sans-serif;
+$ff-secondary: 'Inter', sans-serif;
+
 
 // Font colors
 $fc-main: #FFF;
