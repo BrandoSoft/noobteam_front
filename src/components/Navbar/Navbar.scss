@@ -4,5 +4,23 @@
   display: flex;
   width: 100%;
   height: 100px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 240px;
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid $nav-border;
+}
 
+.navLogo{
+width: 220px;
+  &__text{
+    font-family: $ff-main;
+    font-weight: 800;
+    line-height: 35px;
+    font-size: 26px;
+    color: $fc-main;
+    &--secondary{
+      color: $fc-secondary;
+    }
+  }
 }

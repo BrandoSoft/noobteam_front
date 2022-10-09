@@ -7,12 +7,19 @@
 }
 
 body{
-  background-color: $bgc-main;
-  font-size: 20px;
+  width: 100%;
+  height: 100%;
+  background-color: #0E1319;
 }
 
-.container{
-  display: flex;
-  max-width: 1600px;
-  margin: 30px auto;
+body:after {
+  content: "";
+  background: url('/img/main_bg.jpg');
+  opacity: 0.1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
 }
