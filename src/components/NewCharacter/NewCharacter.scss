@@ -1,9 +1,13 @@
-.newCharacterCard{
-  &name{
+@import './src/scss/variables';
 
-  }
-  & img{
-    width: 100px;
-    height: 100px;
-  }
+.followedContainer{
+  margin: 70px 240px;
+  display: flex;
+  flex-direction: column;
+  font-family: $ff-secondary;
+  color: $fc-secondary;
+}
+.summonerCards{
+display: flex;
+  margin-top: 60px;
 }

@@ -8,6 +8,7 @@ import EnemyCard from "../EnemyCard/EnemyCard";
 import ErrorComponent from "../../utils/ErrorComponent";
 import {getParticipantsList} from "../../apiCalls/playerInfo";
 import {removePlayer} from "../../apiCalls/characters";
+import {getSummonerAvatar} from "../../apiCalls/ddragon";
 
 
 interface Props {
@@ -46,12 +47,12 @@ const PlayerCard = ({data, refresh}: Props) => {
     return (
         <div className="player">
             <div className="player__info">
-                <button onClick={checkGame}>Sprawdz mecz</button>
                 <p>{data.name}</p>
                 <img className="player__avatar"
-                    src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/profileicon/${data.profileIconId}.png`}
+                    src={getSummonerAvatar(String(data.profileIconId))}
                     alt=""/>
                 <p> LVL: {data.summonerLevel}</p>
+                <button onClick={checkGame}>Sprawdz mecz</button>
                 <button onClick={removePlayerFromList}>Przestań obserwować</button>
             </div>
             <div className="player__game">

@@ -1,37 +1,10 @@
 @import './src/scss/variables';
 
 .player {
-  display: flex;
-  min-width:50%;
-  &__avatar{
-    width: 100px;
-  }
-  &__info {
-    display: flex;
-    flex-direction: column;
-    width: 20%;
-    margin: 10px;
-    align-items: center;
-  }
-
-  button {
-    margin: 10px;
-    padding: 5px;
-  }
-
-  &__game {
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-  }
-
-  &__ally, &__enemy {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    margin: 5px;
+display: flex;
+  &__info{
+    width: 467px;
+    height: 171px;
   }
 }
 

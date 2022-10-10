@@ -10,3 +10,7 @@ export const getChampData = async (): Promise<any>=>{
 export const getPlayerAvatar = (name: string): string =>{
     return `http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${name}.png`
 }
+
+export const getSummonerAvatar = (profileIconId:string): string =>{
+    return `http://ddragon.leagueoflegends.com/cdn/${version}/img/profileicon/${profileIconId}.png`
+}

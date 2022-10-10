@@ -35,7 +35,7 @@ const NewCharacter = ({characterData, show, clear}: Props) => {
     };
 
     return (
-        <div className='newCharacterCard'>
+        <div className='followedSummoner'>
             <p>{characterData.name}</p>
             <img
                 src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/profileicon/${characterData.profileIconId}.png`}

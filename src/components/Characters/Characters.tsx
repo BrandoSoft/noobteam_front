@@ -33,12 +33,14 @@ export const Characters = () => {
 
     if (isLoggedIn) {
         return (
-            <div className="charactersContainer">
+            <div className="followedContainer">
                 {
                     characters.length > 0 &&
                     <>
-                        <h2>Witaj {userName}, lista postaci które obserwujesz:</h2>
-                         {characters.map((e: SimpleCharactersEntity) => <PlayerCard data={e} key={e.name} refresh={getPlayerList}/>)}
+                        <h2>Obserwowane konta:</h2>
+                         <div className="summonerCards">
+                             {characters.map((e: SimpleCharactersEntity) => <PlayerCard data={e} key={e.name} refresh={getPlayerList}/>)}
+                         </div>
                     </>
                 }
                 <AddCharacter refresh={getPlayerList}/>
