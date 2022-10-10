@@ -90,13 +90,12 @@ export const LoginForm = () => {
 
     return (
         <>
-            <button onClick={handleLoginTestUser} > Testowe</button>
-            {errorMsg && <div className="error">
-               <BiCommentError className="error__icon"/>
-                <div className="error__message">{errorMsg}</div></div>}
 
             <div className="loginForm">
-                <div className="loginForm__form">
+                <button onClick={handleLoginTestUser} className="loginForm__button"> Testowe</button>
+                {errorMsg && <div className="error">
+                    <BiCommentError className="error__icon"/>
+                    <div className="error__message">{errorMsg}</div></div>}
                     <form onSubmit={handleLogin}>
                         <input
                             type="text"
@@ -110,10 +109,9 @@ export const LoginForm = () => {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
-                        <button type="submit" className="login">Zaloguj</button>
+                        <button type="submit" className="loginForm__button">Zaloguj</button>
                     </form>
-                    <Link to="/register" className="register"> Rejestracja</Link>
-                </div>
+                    <Link to="/register" className="loginForm__register">Rejestracja</Link>
             </div>
         </>
     );

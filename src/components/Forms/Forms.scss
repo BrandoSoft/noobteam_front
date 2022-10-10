@@ -1,57 +1,38 @@
 @import './src/scss/variables';
 
-.register, .login {
-  display: flex;
-  margin: 10px;
-  padding: 0 20px;
-  height: 40px;
-  list-style: none;
-  border-radius: 10px;
-  color: #fff;
-  font-family: $ff-main;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 15px;
-  line-height: 40px;
-  background-color: $nav-secondary;
-
-  &:hover {
-    background-color: $nav-highlight;
-  }
-}
-
 .loginForm {
-  display: flex;
-  justify-content: right;
-
-  & form {
-    display: flex;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  & input{
+    margin-right: 5px;
+    background-color: #343740;
+    width: 100px;
+    height: 30px;
+    border-radius: 5%;
+    padding: 5px;
+    color: $fc-secondary;
+    border: none;
   }
-
-  &__form {
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
+  &__button{
+    height: 35px;
+    font-family: $ff-main;
+    line-height: 16px;
+    letter-spacing: 1px;
+    font-size: 16px;
+    padding: 0 5px;
+    border-radius: 4px;
+    margin-right: 5px;
+    background-color: $fc-main;
+    border: 0;
   }
-
-  & input {
-    padding: 0 10px;
-    margin: 0 5px;
-    border-radius: 5px;
+  &__register{
+    font-family: $ff-main;
+    color: $fc-secondary;
+    text-decoration: none;
+    letter-spacing: 1px;
+    border-bottom: 2px solid $fc-main;
   }
-
-  & button {
-    border: #A60C0E;
-  }
-}
-
-.test {
-  border: 0;
-  height: 60px;
-  line-height: 60px;
-  padding: 0 220px;
 }
 
 .error {
