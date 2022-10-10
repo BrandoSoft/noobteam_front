@@ -4,6 +4,7 @@ import {RiotCharacterEntity} from 'types'
 import './NewCharacter.scss'
 import {useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
+import {addSummonerToDb} from "../../apiCalls/characters";
 
 interface Props {
     characterData: RiotCharacterEntity,
@@ -19,33 +20,14 @@ const NewCharacter = ({characterData, show, clear}: Props) => {
 
 
     const addPlayerToDB = async () => {
-        const userData = {
-            name: characterData.name,
-            userId: userId,
-            puuid: characterData.puuid,
-            accountId: characterData.accountId,
-            id: characterData.id,
-            profileIconId: characterData.profileIconId,
-            revisionDate: characterData.revisionDate,
-            summonerLevel: characterData.summonerLevel,
-        }
-        const res = await fetch(`${process.env.REACT_APP_BACKEND}/characters/`, {
-                method: 'POST',
-                body: JSON.stringify(userData),
-                headers: {
-                    'Content-Type': 'application/json',
-                    'x-auth-token': userToken,
-                },
-            }
-        );
 
-        const data = await res.json()
+        const {resStatus, resData} = await addSummonerToDb(characterData, userId, userToken)
 
-        if(res.status === 400) {
-            setResMsg(data.errors[0].msg)
+        if(resStatus === 400) {
+            setResMsg(resData.errors[0].msg)
             setTimeout(()=> setResMsg(null),3000)
         }
-        if(res.status === 200){
+        if(resStatus === 200){
             show();
             clear();
         }
