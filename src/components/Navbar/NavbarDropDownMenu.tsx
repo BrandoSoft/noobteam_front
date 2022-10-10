@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import DropdownItem from "./DropdownItem";
 
 import avatar from '../../img/useravatar.jpg'
@@ -16,8 +16,24 @@ interface Props {
 const NavbarDropDownMenu = ({logoutUser, userName}: Props) => {
     const [open, setOpen] = useState(false)
 
+    const menuRef = useRef<any>();
+
+    useEffect(()=>{
+        const handler = (e:MouseEvent)=>{
+            if(!menuRef.current.contains(e.target)){
+                setOpen(false)
+                console.log(menuRef.current)
+            }
+        }
+        document.addEventListener('mousedown', handler);
+
+        return() => {
+            document.removeEventListener('mousedown', handler)
+        }
+    })
+
     return (
-        <div className="dropdownMenu">
+        <div className="dropdownMenu" ref={menuRef}>
             <div className="dropdownMenu__trigger" onClick={()=>{setOpen(!open)}}>
                 <p className="dropdownMenu__text">
                     <img src={avatar} alt="user avatar" className="dropdownMenu__img"/>
