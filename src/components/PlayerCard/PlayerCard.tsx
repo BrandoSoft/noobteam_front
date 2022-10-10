@@ -20,7 +20,6 @@ interface Props {
 const PlayerCard = ({data, refresh}: Props) => {
 
     const {userId, userToken} = useSelector((store: RootState) => store.user);
-    const version = process.env.REACT_APP_DDRAGON;
     const [resMsg, setResMsg] = useState(null);
     const [ally, setAlly] = useState<any[]>([]);
     const [enemy, setEnemy] = useState<any[]>([]);
@@ -47,14 +46,23 @@ const PlayerCard = ({data, refresh}: Props) => {
     return (
         <div className="player">
             <div className="player__info">
-                <p>{data.name}</p>
-                <img className="player__avatar"
-                    src={getSummonerAvatar(String(data.profileIconId))}
-                    alt=""/>
-                <p> LVL: {data.summonerLevel}</p>
-                <button onClick={checkGame}>Sprawdz mecz</button>
-                <button onClick={removePlayerFromList}>Przestań obserwować</button>
+                <div className="player__info--top">
+                    <img className="player__info--avatar"
+                         src={getSummonerAvatar(String(data.profileIconId))}
+                         alt=""/>
+                    <div className="player__info--text">
+                        <p className="player__info--text--name">{data.name}</p>
+                        <p className="player__info--text--info"> Poziom: {data.summonerLevel}</p>
+                        <p className="player__info--text--info"> Dywizja: </p>
+                    </div>
+                </div>
+                <div className="player__info--buttons">
+                    <button onClick={checkGame}>Historia gier</button>
+                    <button onClick={checkGame}>Sprawdz mecz</button>
+                    <button onClick={removePlayerFromList}>Usuń</button>
+                </div>
             </div>
+
             <div className="player__game">
                 {
                     resMsg && <ErrorComponent content={resMsg}/>
