@@ -3,10 +3,12 @@ import {NavLink} from "react-router-dom";
 
 const NavbarMenu = () => {
     return (
-        <div>
-            <ul>
-                <li><NavLink to='/'>Home</NavLink></li>
-                <li><NavLink to='/user'>User</NavLink></li>
+        <div className="navMenu">
+            <ul className="navMenu__ul">
+                <li><NavLink to='/' className="navMenu__NavLink">Home</NavLink></li>
+                <li><NavLink to='/' className="navMenu__NavLink">About</NavLink></li>
+                <li><NavLink to='/' className="navMenu__NavLink">Match history</NavLink></li>
+                <li><NavLink to='/' className="navMenu__NavLink">Players</NavLink></li>
             </ul>
         </div>
     );

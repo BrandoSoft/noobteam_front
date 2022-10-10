@@ -83,12 +83,12 @@ export const LoginForm = () => {
     };
 
     if (isLoggedIn) {
-        return <button onClick={logoutUser} className="login test">Wyloguj {userName} </button>
+        return <button onClick={logoutUser} className=""> {userName} </button>
     }
 
     return (
         <>
-            <button onClick={handleLoginTestUser} className="login test"> Zaloguj na konto testowe</button>
+            <button onClick={handleLoginTestUser} > Testowe</button>
             {errorMsg && <div className="error">
                <BiCommentError className="error__icon"/>
                 <div className="error__message">{errorMsg}</div></div>}

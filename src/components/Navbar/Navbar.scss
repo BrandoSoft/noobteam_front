@@ -11,16 +11,36 @@
   border-bottom: 1px solid $nav-border;
 }
 
-.navLogo{
-width: 220px;
-  &__text{
+.navLogo {
+  width: 220px;
+
+  &__text {
     font-family: $ff-main;
     font-weight: 800;
     line-height: 35px;
     font-size: 26px;
     color: $fc-main;
-    &--secondary{
+
+    &--secondary {
       color: $fc-secondary;
     }
+  }
+}
+
+.navMenu{
+  &__ul{
+    list-style: none;
+    display: flex;
+    & li{
+padding: 16px;
+    }
+  }
+  &__NavLink{
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: $ff-main;
+    color: $fc-secondary;
+
   }
 }
