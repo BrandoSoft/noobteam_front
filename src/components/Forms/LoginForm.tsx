@@ -6,6 +6,7 @@ import {RootState} from "../../redux/store";
 import {Link, useNavigate} from 'react-router-dom';
 
 import { BiCommentError } from 'react-icons/bi';
+import NavbarDropDownMenu from "../Navbar/NavbarDropDownMenu";
 
 export const LoginForm = () => {
 
@@ -83,7 +84,8 @@ export const LoginForm = () => {
     };
 
     if (isLoggedIn) {
-        return <button onClick={logoutUser} className=""> {userName} </button>
+       return <NavbarDropDownMenu logoutUser={logoutUser} userName={userName}/>
+
     }
 
     return (
