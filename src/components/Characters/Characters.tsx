@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { AddCharacter } from "./AddCharacter";
-import { useSelector } from "react-redux";
-import { RootState } from '../../redux/store'
+import React, {useEffect, useState} from 'react';
+import {AddCharacter} from "./AddCharacter";
+import {useSelector} from "react-redux";
+import {RootState} from '../../redux/store'
 import PlayerCard from "../PlayerCard/PlayerCard";
-import { SimpleCharactersEntity } from 'types';
+import {SimpleCharactersEntity} from 'types';
 import './Characters.scss'
 
 export const Characters = () => {
-    const { userToken, userName, isLoggedIn, userId } = useSelector((store: RootState) => store.user)
+    const {userToken, userName, isLoggedIn, userId} = useSelector((store: RootState) => store.user)
 
     const [characters, setCharacters] = useState<SimpleCharactersEntity | any>([]);
 
@@ -27,7 +27,7 @@ export const Characters = () => {
 
     useEffect(() => {
         if (isLoggedIn) {
-           getPlayerList()
+            getPlayerList()
         }
     }, [userName]);
 
@@ -37,13 +37,16 @@ export const Characters = () => {
                 {
                     characters.length > 0 &&
                     <>
-                        <h2>Obserwowane konta:</h2>
-                         <div className="summonerCards">
-                             {characters.map((e: SimpleCharactersEntity) => <PlayerCard data={e} key={e.name} refresh={getPlayerList}/>)}
-                         </div>
+                        <div className="searchBar">
+                            <h2>Obserwowane konta:</h2><AddCharacter refresh={getPlayerList}/>
+                        </div>
+                        <div className="summonerCards">
+                            {characters.map((e: SimpleCharactersEntity) => <PlayerCard data={e} key={e.name}
+                                                                                       refresh={getPlayerList}/>)}
+                        </div>
                     </>
                 }
-                <AddCharacter refresh={getPlayerList}/>
+
             </div>
         );
     }

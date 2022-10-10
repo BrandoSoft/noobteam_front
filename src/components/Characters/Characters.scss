@@ -6,53 +6,53 @@
   justify-content: center;
   align-items: center;
 
+  &__button {
+    width: 120px;
+    height: 41px;
+    background-color: $bgc-summonerCard-button;
+    border: none;
+    margin: 16px 0;
+    border-radius: 6px;
+    font-family: $ff-secondary;
+    color: $fc-secondary;
+    font-size: 14px;
+    line-height: 17px;
+  }
+
   &__form {
     display: flex;
     align-items: center;
-    margin: 0 30px;
+
 
     & input {
-      padding: 0 10px;
-      margin: 0 5px;
-      height: 35px;
-      border-radius: 5px;
+      background: #343740;
+      border: 1px solid #25282F;
+      border-radius: 8px;
+      color: $fc-secondary;
+      font-family: $ff-secondary;
+      width: 300px;
+      height: 48px;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 17px;
+      padding: 8px 16px;
+    }
+
+    & button {
+      position: relative;
+      right: 12%;
+      background: #343740;
+      border: 1px solid #25282F;
+      border-radius: 8px;
+      color: $fc-secondary;
+      font-family: $ff-secondary;
+      font-size: 20px;
     }
   }
 }
 
-.charactersContainer {
-  width: 100%;
-}
-
-.addCharacterContainer {
-  width: 100%;
+.searchBar {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-}
-
-.newCharacters {
-  display: flex;
-  flex-direction: row;
-}
-
-.newCharacterCard {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 20px;
-  padding: 10px;
-
-  & img {
-    display: block;
-    border-radius: 10px;
-  }
-    & p {
-    margin: 10px;
-  }
-  & button {
-    padding: 5px 10px;
-  }
 }

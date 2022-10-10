@@ -5,6 +5,8 @@ import NewCharacter from "../NewCharacter/NewCharacter";
 import {RiotCharacterEntity} from 'types'
 import ErrorComponent from "../../utils/ErrorComponent";
 
+import { BsSearch } from 'react-icons/bs';
+
 interface Props {
     refresh: () => {}
 }
@@ -63,7 +65,7 @@ export const AddCharacter = ({refresh}: Props) => {
         }
         if (res.status !== 200) {
             setResError(data.errors[0].msg)
-            setTimeout(()=> setResError(null),3000)
+            setTimeout(() => setResError(null), 3000)
         }
     }
 
@@ -76,18 +78,20 @@ export const AddCharacter = ({refresh}: Props) => {
                 <NewCharacter characterData={randomCharacter} show={refresh} clear={() => setRandomCharacter(null)}/>}
             </div>
             <div className="characters">
-                <p>Wpisz nazwę postaci:</p>
-                <form onSubmit={findCharacter} className="characters__form">
-                    <input
-                        type="name"
-                        placeholder="Nazwa Przywoływacza"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                    />
-                    <button type="submit" className="login">Szukaj</button>
-                    {resError && <ErrorComponent content={resError}/>}
-                </form>
-                <button onClick={getRandomChamp} className="login"> Lub wylosuj!</button>
+
+                {resError && <ErrorComponent content={resError}/>}
+                <div className="characters__iconHolder">
+                    <form onSubmit={findCharacter} className="characters__form">
+                        <input
+                            type="name"
+                            placeholder="Wyszukaj gracza..."
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                        <button type="submit">{<BsSearch/>}</button>
+                    </form>
+                </div>
+                <button onClick={getRandomChamp} className="characters__button"> Lub wylosuj!</button>
             </div>
         </div>
     );
