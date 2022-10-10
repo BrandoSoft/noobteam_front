@@ -72,13 +72,7 @@ export const AddCharacter = ({refresh}: Props) => {
 
     return (
         <div className="addCharacterContainer">
-            <div className="newCharacters">
-                {character && <NewCharacter characterData={character} show={refresh} clear={() => setCharacter(null)}/>}
-                {randomCharacter &&
-                <NewCharacter characterData={randomCharacter} show={refresh} clear={() => setRandomCharacter(null)}/>}
-            </div>
-            <div className="characters">
-
+                  <div className="characters">
                 {resError && <ErrorComponent content={resError}/>}
                 <div className="characters__iconHolder">
                     <form onSubmit={findCharacter} className="characters__form">
@@ -92,6 +86,11 @@ export const AddCharacter = ({refresh}: Props) => {
                     </form>
                 </div>
                 <button onClick={getRandomChamp} className="characters__button"> Lub wylosuj!</button>
+            </div>
+            <div className="newCharacters">
+                {character && <NewCharacter characterData={character} show={refresh} clear={() => setCharacter(null)}/>}
+                {randomCharacter &&
+                <NewCharacter characterData={randomCharacter} show={refresh} clear={() => setRandomCharacter(null)}/>}
             </div>
         </div>
     );

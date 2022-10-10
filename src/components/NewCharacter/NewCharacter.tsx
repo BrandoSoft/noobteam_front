@@ -5,6 +5,7 @@ import './NewCharacter.scss'
 import {useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
 import {addSummonerToDb} from "../../apiCalls/characters";
+import {getSummonerAvatar} from "../../apiCalls/ddragon";
 
 interface Props {
     characterData: RiotCharacterEntity,
@@ -35,15 +36,22 @@ const NewCharacter = ({characterData, show, clear}: Props) => {
     };
 
     return (
-        <div className='followedSummoner'>
-            <p>{characterData.name}</p>
-            <img
-                src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/profileicon/${characterData.profileIconId}.png`}
-                alt=""/>
-            <p>Summoner LVL: {characterData.summonerLevel}</p>
-            <button onClick={addPlayerToDB}>Dodaj gracza do obserwowanych</button>
-            <p>{resMsg && resMsg}</p>
+      <div className="player__info">
+        <div className="player__info--top">
+            <img className="player__info--avatar"
+                 src={getSummonerAvatar(String(characterData.profileIconId))}
+                    alt="summoner avatar"/>
+            <div className="player__info--text">
+                <p className="player__info--text--name">{characterData.name}</p>
+                <p className="player__info--text--info"> Poziom: {characterData.summonerLevel}</p>
+                <p className="player__info--text--info"> Dywizja: </p>
+            </div>
         </div>
+        <div className="player__info--buttons">
+            <button onClick={addPlayerToDB} className="long">Dodaj gracza do obserwowanych</button>
+            <button onClick={clear} className="short">Usuń</button>
+        </div>
+    </div>
     );
 };
 
