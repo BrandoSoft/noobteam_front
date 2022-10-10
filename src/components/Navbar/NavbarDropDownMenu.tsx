@@ -16,13 +16,12 @@ interface Props {
 const NavbarDropDownMenu = ({logoutUser, userName}: Props) => {
     const [open, setOpen] = useState(false)
 
-    const menuRef = useRef<any>();
+    const menuRef = useRef<any>(null);
 
     useEffect(()=>{
         const handler = (e:MouseEvent)=>{
             if(!menuRef.current.contains(e.target)){
                 setOpen(false)
-                console.log(menuRef.current)
             }
         }
         document.addEventListener('mousedown', handler);
