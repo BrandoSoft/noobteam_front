@@ -81,7 +81,7 @@ const PlayerCard = ({data, refresh}: Props) => {
                     {enemy.length > 0 && <p className="title">Twój team</p>}
                     <div className="enemy-cards">
                         {enemy.length > 0 ? enemy.map(item => <EnemyCard data={item} key={item.summonerName}
-                                                                         displayStyle={"enemy reverse"}
+                                                                         displayStyle={"reverse"}
                         />) : null}
                     </div>
                 </div>
@@ -90,7 +90,7 @@ const PlayerCard = ({data, refresh}: Props) => {
                         Przeciwnicy</p>}
                     <div className="enemy-cards">
                         {ally.length > 0 ? ally.map(item => <EnemyCard data={item} key={item.summonerName}
-                                                                       displayStyle={"enemy"}
+                                                                       displayStyle={""}
                         />) : null}
                     </div>
                 </div>

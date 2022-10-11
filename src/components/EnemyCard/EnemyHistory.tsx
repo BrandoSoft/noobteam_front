@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
 import {RootState} from "../../redux/store";
 import {getGameScore, getHistoryGamesIds} from "../../apiCalls/matches";
-import { v4 as uuidv4 } from 'uuid';
+import {v4 as uuidv4} from 'uuid';
 
 import './EnemyCard.scss'
 import SummonerStats from "../GameInfo/SummonerStats";
@@ -10,10 +10,11 @@ import SummonerStats from "../GameInfo/SummonerStats";
 interface Props {
     puuid: string;
 }
+
 export type Scores = {
     name: string;
     deaths: number;
-    kills:number;
+    kills: number;
     assists: number;
     lane: string;
     role: string;
@@ -24,7 +25,7 @@ const EnemyHistory = ({puuid}: Props) => {
     const {userToken} = useSelector((store: RootState) => store.user);
 
 
-    const [list, setList]= useState<Scores[]>([]);
+    const [list, setList] = useState<Scores[]>([]);
 
     useEffect(() => {
 
@@ -38,16 +39,23 @@ const EnemyHistory = ({puuid}: Props) => {
                 }
             })()
 
-       }, []
+        }, []
     )
-    console.log(`lista`,list)
+    console.log(`lista`, list)
     return (
         <div className="history">
-            {list && list.map(item =>(<>
-                <SummonerStats name={item.name}/>
-                <div style={{backgroundColor:`${item.win? "red":"green"}`, width:"100%"}}
-                >Z: {item.kills} / Z: {item.deaths} / A: {item.assists}  <p>{item.role} / {item.lane}</p></div>
-            </>))
+            <p className="history__text">Historia: </p>
+            {list && list.map(item => (
+                <SummonerStats
+                    name={item.name}
+                    kills={item.kills}
+                    assists={item.assists}
+                    deaths={item.deaths}
+                    win={item.win}
+                    role={item.role}
+                    lane={item.lane}
+                />
+            ))
             }
         </div>
     );
