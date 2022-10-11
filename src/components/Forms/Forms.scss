@@ -7,31 +7,39 @@
   & input{
     margin-right: 5px;
     background-color: #343740;
-    width: 100px;
-    height: 30px;
+    width: 150px;
+    height: 45px;
     border-radius: 5%;
     padding: 5px;
     color: $fc-secondary;
     border: none;
   }
   &__button{
-    height: 35px;
+    height: 45px;
     font-family: $ff-main;
-    line-height: 16px;
+    line-height: 21px;
     letter-spacing: 1px;
     font-size: 16px;
-    padding: 0 5px;
+    padding: 12px;
     border-radius: 4px;
     margin-right: 5px;
     background-color: $fc-main;
     border: 0;
+    color: $fc-secondary;
   }
   &__register{
+    display: block;
+    height: 45px;
     font-family: $ff-main;
+    line-height: 21px;
+    letter-spacing: 1px;
+    font-size: 16px;
     color: $fc-secondary;
     text-decoration: none;
-    letter-spacing: 1px;
-    border-bottom: 2px solid $fc-main;
+    border: 2px solid $fc-main;
+
+    padding: 12px;
+    border-radius: 4px;
   }
 }
 

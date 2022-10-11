@@ -111,7 +111,7 @@ export const LoginForm = () => {
                         />
                         <button type="submit" className="loginForm__button">Zaloguj</button>
                     </form>
-                    <Link to="/register" className="loginForm__register">Rejestracja</Link>
+                    <Link to="/register" className="loginForm__register">Załóż konto</Link>
             </div>
         </>
     );

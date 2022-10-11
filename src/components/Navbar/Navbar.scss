@@ -90,6 +90,7 @@
 
   &__extend {
     position: absolute;
+    width: 230px;
     top: 80px;
     border-radius: 5%;
     background-color: #fff;
@@ -99,16 +100,18 @@
       flex-direction: column;
       align-items: flex-start;
       list-style: none;
-      width: 230px;
       background-color: #192530;
       & li {
         cursor: pointer;
+        width: 100%;
         display: flex;
         align-items: center;
-        padding: 10px 50px;
+        padding: 10px 15px;
         font-family: $ff-secondary;
         color: $fc-secondary;
+        border-bottom: 1px solid #24303f;
         & p{
+          width: 100%;
           padding: 0 10px;
         }
              }

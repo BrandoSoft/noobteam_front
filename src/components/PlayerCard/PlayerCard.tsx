@@ -23,10 +23,18 @@ const PlayerCard = ({data, refresh}: Props) => {
     const [resMsg, setResMsg] = useState(null);
     const [ally, setAlly] = useState<any[]>([]);
     const [enemy, setEnemy] = useState<any[]>([]);
+    const [extraBig, setExtraBig] = useState(false);
 
     const removePlayerFromList = async () => {
         await removePlayer(data.name, userId, userToken)
         refresh()
+    }
+
+    const expandGameArea = ()=>{
+        // setExtraBig(!extraBig)
+        setAlly([])
+        setEnemy([])
+        setExtraBig(false)
     }
 
 
@@ -41,10 +49,11 @@ const PlayerCard = ({data, refresh}: Props) => {
             setAlly(info.participants.filter((e: any) => e.teamId === 100))
             setEnemy(info.participants.filter((e: any) => e.teamId === 200))
         }
+        setExtraBig(true)
 
     }
     return (
-        <div className="player">
+        <div className={`player ${extraBig? "superBig": "superSmall"}`}>
             <div className="player__info">
                 <div className="player__info--top">
                     <img className="player__info--avatar"
@@ -60,24 +69,25 @@ const PlayerCard = ({data, refresh}: Props) => {
                     <button onClick={checkGame}>Historia gier</button>
                     <button onClick={checkGame}>Sprawdz mecz</button>
                     <button onClick={removePlayerFromList}>Usuń</button>
+                    <button onClick={expandGameArea}>X</button>
                 </div>
             </div>
 
-            <div className="player__game">
+            <div className={`player__game ${extraBig? "superBig": "superSmall"}`}>
                 {
                     resMsg && <ErrorComponent content={resMsg}/>
                 }
-                <div className="player__enemy">
-                    {enemy.length > 0 && <p className="title">Przeciwnicy:</p>}
+                <div className="player__game--ally">
+                    {enemy.length > 0 && <p className="title">Twój team</p>}
                     <div className="enemy-cards">
                         {enemy.length > 0 ? enemy.map(item => <EnemyCard data={item} key={item.summonerName}
                                                                          displayStyle={"enemy reverse"}
                         />) : null}
                     </div>
                 </div>
-                <div className="player__ally">
+                <div className="player__game--enemy">
                     {ally.length > 0 && <p className="title">
-                        Twój Team:</p>}
+                        Przeciwnicy</p>}
                     <div className="enemy-cards">
                         {ally.length > 0 ? ally.map(item => <EnemyCard data={item} key={item.summonerName}
                                                                        displayStyle={"enemy"}

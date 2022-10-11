@@ -42,11 +42,12 @@
       position: relative;
       right: 12%;
       background: #343740;
-      border: 1px solid #25282F;
+      border: none;
       border-radius: 8px;
       color: $fc-secondary;
       font-family: $ff-secondary;
       font-size: 20px;
+
     }
   }
 }
@@ -54,5 +55,5 @@
 .searchBar {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 }
