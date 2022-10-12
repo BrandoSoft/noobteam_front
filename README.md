@@ -15,7 +15,7 @@ Są to podstawowe dane, ale kluczowe elementy pomagające podjąć odpowiednie, 
 
 Już niedługo dokłądniejsze dane.
 
-Strona dostępna pod adresem:
+Strona dostępna pod adresem (wersja Desktop):
 
 https://noobteam.kolodziejdev.pl/
 
