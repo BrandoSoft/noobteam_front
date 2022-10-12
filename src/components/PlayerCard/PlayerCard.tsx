@@ -30,7 +30,7 @@ const PlayerCard = ({data, refresh}: Props) => {
         refresh()
     }
 
-    const expandGameArea = ()=>{
+    const expandGameArea = () => {
         // setExtraBig(!extraBig)
         setAlly([])
         setEnemy([])
@@ -54,7 +54,7 @@ const PlayerCard = ({data, refresh}: Props) => {
 
     }
     return (
-        <div className={`player ${extraBig? "superBig": "superSmall"}`}>
+        <div className={`player ${extraBig ? "superBig" : "superSmall"}`}>
             <div className="player__info">
                 <div className="player__info--top">
                     <img className="player__info--avatar"
@@ -68,15 +68,16 @@ const PlayerCard = ({data, refresh}: Props) => {
                 </div>
                 <div className="player__info--buttons">
                     <button onClick={checkGame}>Historia gier</button>
-                    <button onClick={checkGame}>Sprawdz mecz</button>
+                    <button onClick={checkGame}> Sprawdz mecz</button>
+                    {extraBig?<button onClick={expandGameArea} className="close">X</button> : null}
                     <button onClick={removePlayerFromList}>Usuń</button>
-                    <button onClick={expandGameArea}>X</button>
+
                 </div>
             </div>
 
-            <div className={`player__game ${extraBig? "superBig": "superSmall"}`}>
+            <div className={`player__game ${extraBig ? "superBig" : "superSmall"}`}>
                 {
-                   resMsg && <ErrorComponent content={resMsg}/>
+                    resMsg && <ErrorComponent content={resMsg}/>
                 }
                 <div className="player__game--ally">
                     {enemy.length > 0 && <p className="title">Twój team</p>}
@@ -88,7 +89,7 @@ const PlayerCard = ({data, refresh}: Props) => {
                 </div>
                 <div className="player__game--enemy">
                     {ally.length > 0 && <p className="title">
-                        Przeciwnicy</p>}
+                        Przeciwnicy </p> }
                     <div className="enemy-cards">
                         {ally.length > 0 ? ally.map(item => <EnemyCard data={item} key={item.summonerName}
                                                                        displayStyle={""}

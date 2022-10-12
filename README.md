@@ -33,11 +33,12 @@ Dodaj go do listy obserwowanych graczy.
 
 ![](readme/postacie.jpg)
 
-Sprawdz z kim grasz
+Dodaj wielu graczy do swojej listy obserwowanych:
 
 ![](readme/postac.jpg)
 
-Na Twoim miejscu, zgankował bym Rengara lub Shyvanę... a od reszty, trzymał bym się z daleka:
+Dowiedz się już na początku meczu z kim masz do czynienia, kogo zaatakować a kogo lepiej unikać.
+Jak poszło mu w ostatnich 3 meczach, a wkrótce wiele więcej!
 
 ![](readme/enemy.jpg)
 
@@ -61,7 +62,7 @@ lub jeśli posiadasz backend:
 ```dotenv
 
 REACT_APP_BACKEND=http://localhost:3001
-REACT_APP_DDRAGON=12.16.1
+REACT_APP_DDRAGON=12.19.1
 ```
 
 
