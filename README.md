@@ -75,10 +75,9 @@ REACT_APP_DDRAGON=12.19.1
 
 ### Roadmap
 
-- Zrobić readme z prawdziwego zdarzenia.
+- testy, więcej testów!
 - dodac masę funkcjonalności (na razie klucz api który mam, nie pozwala na więcej niż 20 requestów/sec), a to za mało by dokonać analizy przeciwników.
 - refactor apki, na przykład przeniesienie wszystkich apiCalls do osobnego pliku.
-- 
+
 ### Known problems:
-- cors works for someones, someones are blocked...
-- avatars sometimes didnt works...
+...
