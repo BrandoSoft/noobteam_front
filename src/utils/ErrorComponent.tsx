@@ -1,5 +1,5 @@
 import React from 'react';
-import {BiCommentError} from "react-icons/bi";
+import {TbFaceIdError} from "react-icons/tb";
 
 interface Props {
     content: string;
@@ -8,7 +8,7 @@ interface Props {
 const ErrorComponent = (props: Props)=> {
     return (
         <div className="error error-relative">
-            <BiCommentError className="error__icon"/>
+            <TbFaceIdError className="error__icon"/>
             <div className="error__message">{props.content}</div>
         </div>
     );

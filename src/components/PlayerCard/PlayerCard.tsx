@@ -48,8 +48,9 @@ const PlayerCard = ({data, refresh}: Props) => {
         } else {
             setAlly(info.participants.filter((e: any) => e.teamId === 100))
             setEnemy(info.participants.filter((e: any) => e.teamId === 200))
+            setExtraBig(true)
         }
-        setExtraBig(true)
+
 
     }
     return (
