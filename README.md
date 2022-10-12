@@ -52,7 +52,7 @@ npm install
 
 ```dotenv
 REACT_APP_BACKEND=https://megak-nt.herokuapp.com
-REACT_APP_DDRAGON=12.16.1
+REACT_APP_DDRAGON=12.19.1
 ```
 
 lub jeśli posiadasz backend:
