@@ -75,7 +75,7 @@ const PlayerCard = ({data, refresh}: Props) => {
 
             <div className={`player__game ${extraBig? "superBig": "superSmall"}`}>
                 {
-                    resMsg && <ErrorComponent content={resMsg}/>
+                   resMsg && <ErrorComponent content={resMsg}/>
                 }
                 <div className="player__game--ally">
                     {enemy.length > 0 && <p className="title">Twój team</p>}
